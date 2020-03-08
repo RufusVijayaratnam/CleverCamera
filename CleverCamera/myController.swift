@@ -48,7 +48,7 @@ public class myController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
         NotificationCenter.default.addObserver(self, selector: #selector(myController.connectionChanged(_:)), name: NSNotification.Name(rawValue: BLEServiceChangedStatusNotification), object: nil)
         
         
-            
+            //this is a random git test
         _ = btDiscoverySharedInstance
         
     }
