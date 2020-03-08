@@ -9,23 +9,49 @@
 /* Begin PBXBuildFile section */
 		2E381E3B240972C000C3C273 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E381E3A240972C000C3C273 /* AppDelegate.swift */; };
 		2E381E3D240972C000C3C273 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E381E3C240972C000C3C273 /* SceneDelegate.swift */; };
-		2E381E3F240972C000C3C273 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E381E3E240972C000C3C273 /* ViewController.swift */; };
+		2E381E3F240972C000C3C273 /* myController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E381E3E240972C000C3C273 /* myController.swift */; };
 		2E381E42240972C000C3C273 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E381E40240972C000C3C273 /* Main.storyboard */; };
 		2E381E45240972C000C3C273 /* CleverCamera.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2E381E43240972C000C3C273 /* CleverCamera.xcdatamodeld */; };
 		2E381E47240972C300C3C273 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E381E46240972C300C3C273 /* Assets.xcassets */; };
 		2E381E4A240972C300C3C273 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E381E48240972C300C3C273 /* LaunchScreen.storyboard */; };
+		2E381E5824097BD400C3C273 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E381E5724097BD400C3C273 /* Accelerate.framework */; };
+		2E381E5A24097BDD00C3C273 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E381E5924097BDD00C3C273 /* CoreGraphics.framework */; };
+		2E381E5C24097BF100C3C273 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E381E5B24097BF100C3C273 /* CoreMedia.framework */; };
+		2E381E5E24097BF700C3C273 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E381E5D24097BF700C3C273 /* CoreImage.framework */; };
+		2E381E6024097C0300C3C273 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E381E5F24097C0300C3C273 /* QuartzCore.framework */; };
+		2E381E6224097C0900C3C273 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E381E6124097C0900C3C273 /* CoreVideo.framework */; };
+		2E381E6424097C1300C3C273 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E381E6324097C1300C3C273 /* AssetsLibrary.framework */; };
+		2E381E6624097C1700C3C273 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E381E6524097C1700C3C273 /* AVFoundation.framework */; };
+		2E381E6824097C3500C3C273 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E381E6724097C3500C3C273 /* opencv2.framework */; };
+		2E381E6C240981C100C3C273 /* OpenCVWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2E381E6B240981C100C3C273 /* OpenCVWrapper.mm */; };
+		2E4C6BFA2413CE5F00097FD3 /* BTDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4C6BF92413CE5F00097FD3 /* BTDiscovery.swift */; };
+		2E4C6BFC2413CE6E00097FD3 /* BTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4C6BFB2413CE6E00097FD3 /* BTService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2E381E37240972C000C3C273 /* CleverCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleverCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E381E3A240972C000C3C273 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E381E3C240972C000C3C273 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2E381E3E240972C000C3C273 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2E381E3E240972C000C3C273 /* myController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myController.swift; sourceTree = "<group>"; };
 		2E381E41240972C000C3C273 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2E381E44240972C000C3C273 /* CleverCamera.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CleverCamera.xcdatamodel; sourceTree = "<group>"; };
 		2E381E46240972C300C3C273 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E381E49240972C300C3C273 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E381E4B240972C300C3C273 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E381E5724097BD400C3C273 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		2E381E5924097BDD00C3C273 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2E381E5B24097BF100C3C273 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		2E381E5D24097BF700C3C273 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		2E381E5F24097C0300C3C273 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		2E381E6124097C0900C3C273 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		2E381E6324097C1300C3C273 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		2E381E6524097C1700C3C273 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		2E381E6724097C3500C3C273 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../Frameworks/opencv2.framework; sourceTree = "<group>"; };
+		2E381E69240981C000C3C273 /* CleverCamera-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CleverCamera-Bridging-Header.h"; sourceTree = "<group>"; };
+		2E381E6A240981C100C3C273 /* OpenCVWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCVWrapper.h; sourceTree = "<group>"; };
+		2E381E6B240981C100C3C273 /* OpenCVWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCVWrapper.mm; sourceTree = "<group>"; };
+		2E4C6BF92413CE5F00097FD3 /* BTDiscovery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTDiscovery.swift; sourceTree = "<group>"; };
+		2E4C6BFB2413CE6E00097FD3 /* BTService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +59,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E381E6824097C3500C3C273 /* opencv2.framework in Frameworks */,
+				2E381E6624097C1700C3C273 /* AVFoundation.framework in Frameworks */,
+				2E381E6424097C1300C3C273 /* AssetsLibrary.framework in Frameworks */,
+				2E381E6224097C0900C3C273 /* CoreVideo.framework in Frameworks */,
+				2E381E6024097C0300C3C273 /* QuartzCore.framework in Frameworks */,
+				2E381E5E24097BF700C3C273 /* CoreImage.framework in Frameworks */,
+				2E381E5C24097BF100C3C273 /* CoreMedia.framework in Frameworks */,
+				2E381E5A24097BDD00C3C273 /* CoreGraphics.framework in Frameworks */,
+				2E381E5824097BD400C3C273 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,8 +77,12 @@
 		2E381E2E240972C000C3C273 = {
 			isa = PBXGroup;
 			children = (
+				2E381E6A240981C100C3C273 /* OpenCVWrapper.h */,
+				2E381E6B240981C100C3C273 /* OpenCVWrapper.mm */,
 				2E381E39240972C000C3C273 /* CleverCamera */,
 				2E381E38240972C000C3C273 /* Products */,
+				2E381E5624097BD400C3C273 /* Frameworks */,
+				2E381E69240981C000C3C273 /* CleverCamera-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,7 +99,9 @@
 			children = (
 				2E381E3A240972C000C3C273 /* AppDelegate.swift */,
 				2E381E3C240972C000C3C273 /* SceneDelegate.swift */,
-				2E381E3E240972C000C3C273 /* ViewController.swift */,
+				2E381E3E240972C000C3C273 /* myController.swift */,
+				2E4C6BF92413CE5F00097FD3 /* BTDiscovery.swift */,
+				2E4C6BFB2413CE6E00097FD3 /* BTService.swift */,
 				2E381E40240972C000C3C273 /* Main.storyboard */,
 				2E381E46240972C300C3C273 /* Assets.xcassets */,
 				2E381E48240972C300C3C273 /* LaunchScreen.storyboard */,
@@ -68,6 +109,22 @@
 				2E381E43240972C000C3C273 /* CleverCamera.xcdatamodeld */,
 			);
 			path = CleverCamera;
+			sourceTree = "<group>";
+		};
+		2E381E5624097BD400C3C273 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2E381E6724097C3500C3C273 /* opencv2.framework */,
+				2E381E6524097C1700C3C273 /* AVFoundation.framework */,
+				2E381E6324097C1300C3C273 /* AssetsLibrary.framework */,
+				2E381E6124097C0900C3C273 /* CoreVideo.framework */,
+				2E381E5F24097C0300C3C273 /* QuartzCore.framework */,
+				2E381E5D24097BF700C3C273 /* CoreImage.framework */,
+				2E381E5B24097BF100C3C273 /* CoreMedia.framework */,
+				2E381E5924097BDD00C3C273 /* CoreGraphics.framework */,
+				2E381E5724097BD400C3C273 /* Accelerate.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,6 +159,7 @@
 				TargetAttributes = {
 					2E381E36240972C000C3C273 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 					};
 				};
 			};
@@ -141,8 +199,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E381E3F240972C000C3C273 /* ViewController.swift in Sources */,
+				2E381E3F240972C000C3C273 /* myController.swift in Sources */,
+				2E4C6BFC2413CE6E00097FD3 /* BTService.swift in Sources */,
+				2E381E6C240981C100C3C273 /* OpenCVWrapper.mm in Sources */,
 				2E381E3B240972C000C3C273 /* AppDelegate.swift in Sources */,
+				2E4C6BFA2413CE5F00097FD3 /* BTDiscovery.swift in Sources */,
 				2E381E3D240972C000C3C273 /* SceneDelegate.swift in Sources */,
 				2E381E45240972C000C3C273 /* CleverCamera.xcdatamodeld in Sources */,
 			);
@@ -288,8 +349,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N92EBK3VFP;
+				FRAMEWORK_SEARCH_PATHS = /Users/RufusVijayaratnam/rufus/Coding/Frameworks;
 				INFOPLIST_FILE = CleverCamera/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -297,6 +360,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = rufusV.CleverCamera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "CleverCamera-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -306,8 +373,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N92EBK3VFP;
+				FRAMEWORK_SEARCH_PATHS = /Users/RufusVijayaratnam/rufus/Coding/Frameworks;
 				INFOPLIST_FILE = CleverCamera/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -315,6 +384,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = rufusV.CleverCamera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "CleverCamera-Bridging-Header.h";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
