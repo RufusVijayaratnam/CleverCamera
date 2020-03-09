@@ -11,6 +11,7 @@ import AVFoundation
 import CoreBluetooth
 
 
+
 public class myController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     
@@ -96,6 +97,8 @@ public class myController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
             }
         }
     }
+    
+
     
     @objc func timerTXDelayElapsed() {
         self.allowTX = true
