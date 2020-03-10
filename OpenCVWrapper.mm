@@ -36,12 +36,10 @@ using namespace std;
 @implementation OpenCVWrapper
 
 {
-    // A member variable holding the wrapped CvVideoCamera
+ 
     CvVideoCamera * videoCamera;
-    //UIViewController ViewController *swiftController;
+  
 }
-
-
 
 -(id)initWithImageView:(UIImageView*)iv {
     videoCamera = [[CvVideoCamera alloc] initWithParentView:iv];
@@ -66,7 +64,7 @@ using namespace std;
     inRange(HSVImage, Scalar(0, 120, 100), Scalar(5, 255, 255), redMask1);
     inRange(HSVImage, Scalar(175, 120, 100), Scalar(180, 255, 255), redMask2);
     inRange(HSVImage, Scalar(60, 150, 40), Scalar(100, 255, 255), greenMask);
-    inRange(HSVImage, Scalar(110, 250, 250), Scalar(180, 255, 255), blueMask);
+    inRange(HSVImage, Scalar(110, 230, 230), Scalar(180, 255, 255), blueMask);
     
     redMask1 = redMask1 + redMask2;
     
@@ -92,7 +90,6 @@ using namespace std;
     Mat pixelTransformMatrix = findPixelMap();
     
     robotTracking(refinedBlue, image, pixelTransformMatrix);
-    
     
 }
 
@@ -122,8 +119,6 @@ Mat refineColour(cv::Mat& mask, const cv::Mat& image, const int refinementResolu
     
     return refinedImage;
 }
-
-
 
 void drawBoxes(cv::Mat& refinedImage,  cv::Mat& image) {
     
@@ -166,7 +161,6 @@ void drawBoxes(cv::Mat& refinedImage,  cv::Mat& image) {
     
 }
 
-
 cv::Mat findPixelMap() {
     Mat pixelMapMatrix;
     vector<Point2f>pixelPoints;
@@ -187,7 +181,6 @@ void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransfo
     Mat labels, stats, centroids;
     Mat rectangles(image.rows, image.cols, CV_8UC3);
     //Mat rectangles(image.rows, image.cols, )
-    int label_count = connectedComponentsWithStats(refinedImage, labels, stats, centroids, 8);
     
     myController *swift =  [[myController alloc]init];
     
@@ -225,9 +218,6 @@ void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransfo
     }
     
 }
-
-
-
 #endif
 
 
@@ -244,6 +234,5 @@ void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransfo
 -(void)doBlueTooth {
     
 }
-
 
 @end
