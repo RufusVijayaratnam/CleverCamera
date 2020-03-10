@@ -77,8 +77,8 @@ using namespace std;
     refinedBlue = refineColour(blueMask, image, refinementResolution);
     
     
-    drawBoxes(refinedRed, image);
-    drawBoxes(refinedGreen, image);
+    //drawBoxes(refinedRed, image);
+    //drawBoxes(refinedGreen, image);
     drawBoxes(refinedBlue, image);
     //UInt16 pixelCoordX = 2231;
     //UInt16 pixelCoordY = 993;

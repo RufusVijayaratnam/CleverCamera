@@ -1,0 +1,374 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "btDiscoverySharedInstance"
+- "BTDiscovery"
+provides-nominal:
+- "12CleverCamera11BTDiscoveryC"
+provides-member:
+- ["12CleverCamera11BTDiscoveryC", ""]
+provides-dynamic-lookup:
+- "centralManager"
+- "centralManagerDidUpdateState"
+depends-top-level:
+- !private "=="
+- "AssignmentPrecedence"
+- !private "BLEServiceUUID"
+- "BTDiscovery"
+- "BTService"
+- "CBCentralManager"
+- "CBCentralManagerDelegate"
+- "CBPeripheral"
+- !private "CBPeripheralState"
+- !private "DispatchQueue"
+- "Error"
+- "NSNumber"
+- "NSObject"
+- "String"
+- !private "StringLiteralType"
+- "btDiscoverySharedInstance"
+- !private "||"
+depends-member:
+- !private ["12CleverCamera11BTDiscoveryC", "BLEServiceUUID"]
+- ["12CleverCamera11BTDiscoveryC", "BTService"]
+- ["12CleverCamera11BTDiscoveryC", "CBCentralManager"]
+- ["12CleverCamera11BTDiscoveryC", "CBPeripheral"]
+- !private ["12CleverCamera11BTDiscoveryC", "CBPeripheralState"]
+- !private ["12CleverCamera11BTDiscoveryC", "DispatchQueue"]
+- ["12CleverCamera11BTDiscoveryC", "Error"]
+- ["12CleverCamera11BTDiscoveryC", "NSNumber"]
+- ["12CleverCamera11BTDiscoveryC", "String"]
+- ["12CleverCamera11BTDiscoveryC", "bleService"]
+- ["12CleverCamera11BTDiscoveryC", "centralManager"]
+- ["12CleverCamera11BTDiscoveryC", "centralManagerDidUpdateState"]
+- ["12CleverCamera11BTDiscoveryC", "clearDevices"]
+- ["12CleverCamera11BTDiscoveryC", "deinit"]
+- ["12CleverCamera11BTDiscoveryC", "init"]
+- !private ["12CleverCamera11BTDiscoveryC", "peripheralBLE"]
+- ["12CleverCamera11BTDiscoveryC", "startScanning"]
+- !private ["12CleverCamera9BTServiceC", "init"]
+- !private ["12CleverCamera9BTServiceC", "startDiscoveringServices"]
+- !private ["So16CBCentralManagerC", "connect"]
+- !private ["So16CBCentralManagerC", "init"]
+- !private ["So16CBCentralManagerC", "scanForPeripherals"]
+- !private ["So16CBCentralManagerC", "state"]
+- !private ["So16CBCentralManagerC", "stopScan"]
+- !private ["So24CBCentralManagerDelegateP", "BLEServiceUUID"]
+- !private ["So24CBCentralManagerDelegateP", "BTService"]
+- !private ["So24CBCentralManagerDelegateP", "CBCentralManager"]
+- !private ["So24CBCentralManagerDelegateP", "CBPeripheralState"]
+- !private ["So24CBCentralManagerDelegateP", "DispatchQueue"]
+- ["So24CBCentralManagerDelegateP", ""]
+- !private ["So24CBCentralManagerDelegateP", "bleService"]
+- ["So24CBCentralManagerDelegateP", "centralManager"]
+- ["So24CBCentralManagerDelegateP", "centralManagerDidUpdateState"]
+- !private ["So24CBCentralManagerDelegateP", "clearDevices"]
+- ["So24CBCentralManagerDelegateP", "init"]
+- !private ["So24CBCentralManagerDelegateP", "peripheralBLE"]
+- !private ["So24CBCentralManagerDelegateP", "startScanning"]
+- !private ["So9CBManagerC", "connect"]
+- !private ["So9CBManagerC", "init"]
+- !private ["So9CBManagerC", "scanForPeripherals"]
+- !private ["So9CBManagerC", "state"]
+- !private ["So9CBManagerC", "stopScan"]
+- ["So14CBManagerStateV", "poweredOff"]
+- ["So14CBManagerStateV", "poweredOn"]
+- ["So14CBManagerStateV", "resetting"]
+- ["So14CBManagerStateV", "unauthorized"]
+- ["So14CBManagerStateV", "unknown"]
+- ["So14CBManagerStateV", "unsupported"]
+- !private ["So6CBPeerC", "name"]
+- !private ["So6CBPeerC", "state"]
+- !private ["So12CBPeripheralC", "name"]
+- !private ["So12CBPeripheralC", "state"]
+- !private ["So20CBPeripheralDelegateP", "init"]
+- !private ["So20CBPeripheralDelegateP", "startDiscoveringServices"]
+- !private ["So17CBPeripheralStateV", "disconnected"]
+- !private ["s7CVarArgP", "BLEServiceUUID"]
+- !private ["s7CVarArgP", "BTService"]
+- !private ["s7CVarArgP", "CBCentralManager"]
+- !private ["s7CVarArgP", "CBPeripheralState"]
+- !private ["s7CVarArgP", "DispatchQueue"]
+- ["s7CVarArgP", ""]
+- !private ["s7CVarArgP", "bleService"]
+- ["s7CVarArgP", "centralManager"]
+- ["s7CVarArgP", "centralManagerDidUpdateState"]
+- !private ["s7CVarArgP", "clearDevices"]
+- !private ["s7CVarArgP", "connect"]
+- ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "name"]
+- !private ["s7CVarArgP", "peripheralBLE"]
+- !private ["s7CVarArgP", "scanForPeripherals"]
+- !private ["s7CVarArgP", "startDiscoveringServices"]
+- !private ["s7CVarArgP", "startScanning"]
+- !private ["s7CVarArgP", "state"]
+- !private ["s7CVarArgP", "stopScan"]
+- !private ["s28CustomDebugStringConvertibleP", "BLEServiceUUID"]
+- !private ["s28CustomDebugStringConvertibleP", "BTService"]
+- !private ["s28CustomDebugStringConvertibleP", "CBCentralManager"]
+- !private ["s28CustomDebugStringConvertibleP", "CBPeripheralState"]
+- !private ["s28CustomDebugStringConvertibleP", "DispatchQueue"]
+- ["s28CustomDebugStringConvertibleP", ""]
+- !private ["s28CustomDebugStringConvertibleP", "bleService"]
+- ["s28CustomDebugStringConvertibleP", "centralManager"]
+- ["s28CustomDebugStringConvertibleP", "centralManagerDidUpdateState"]
+- !private ["s28CustomDebugStringConvertibleP", "clearDevices"]
+- !private ["s28CustomDebugStringConvertibleP", "connect"]
+- ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "name"]
+- !private ["s28CustomDebugStringConvertibleP", "peripheralBLE"]
+- !private ["s28CustomDebugStringConvertibleP", "scanForPeripherals"]
+- !private ["s28CustomDebugStringConvertibleP", "startDiscoveringServices"]
+- !private ["s28CustomDebugStringConvertibleP", "startScanning"]
+- !private ["s28CustomDebugStringConvertibleP", "state"]
+- !private ["s28CustomDebugStringConvertibleP", "stopScan"]
+- !private ["s23CustomStringConvertibleP", "BLEServiceUUID"]
+- !private ["s23CustomStringConvertibleP", "BTService"]
+- !private ["s23CustomStringConvertibleP", "CBCentralManager"]
+- !private ["s23CustomStringConvertibleP", "CBPeripheralState"]
+- !private ["s23CustomStringConvertibleP", "DispatchQueue"]
+- ["s23CustomStringConvertibleP", ""]
+- !private ["s23CustomStringConvertibleP", "bleService"]
+- ["s23CustomStringConvertibleP", "centralManager"]
+- ["s23CustomStringConvertibleP", "centralManagerDidUpdateState"]
+- !private ["s23CustomStringConvertibleP", "clearDevices"]
+- !private ["s23CustomStringConvertibleP", "connect"]
+- ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "name"]
+- !private ["s23CustomStringConvertibleP", "peripheralBLE"]
+- !private ["s23CustomStringConvertibleP", "scanForPeripherals"]
+- !private ["s23CustomStringConvertibleP", "startDiscoveringServices"]
+- !private ["s23CustomStringConvertibleP", "startScanning"]
+- !private ["s23CustomStringConvertibleP", "state"]
+- !private ["s23CustomStringConvertibleP", "stopScan"]
+- !private ["So18OS_dispatch_objectC", "init"]
+- !private ["So17OS_dispatch_queueC", "init"]
+- !private ["SQ", "BLEServiceUUID"]
+- !private ["SQ", "BTService"]
+- !private ["SQ", "CBCentralManager"]
+- !private ["SQ", "CBPeripheralState"]
+- !private ["SQ", "DispatchQueue"]
+- ["SQ", ""]
+- !private ["SQ", "bleService"]
+- ["SQ", "centralManager"]
+- ["SQ", "centralManagerDidUpdateState"]
+- !private ["SQ", "clearDevices"]
+- !private ["SQ", "connect"]
+- !private ["SQ", "disconnected"]
+- ["SQ", "init"]
+- !private ["SQ", "name"]
+- !private ["SQ", "peripheralBLE"]
+- ["SQ", "poweredOff"]
+- ["SQ", "poweredOn"]
+- ["SQ", "resetting"]
+- !private ["SQ", "scanForPeripherals"]
+- !private ["SQ", "startDiscoveringServices"]
+- !private ["SQ", "startScanning"]
+- !private ["SQ", "state"]
+- !private ["SQ", "stopScan"]
+- ["SQ", "unauthorized"]
+- ["SQ", "unknown"]
+- ["SQ", "unsupported"]
+- !private ["SH", "BLEServiceUUID"]
+- !private ["SH", "BTService"]
+- !private ["SH", "CBCentralManager"]
+- !private ["SH", "CBPeripheralState"]
+- !private ["SH", "DispatchQueue"]
+- ["SH", ""]
+- !private ["SH", "bleService"]
+- ["SH", "centralManager"]
+- ["SH", "centralManagerDidUpdateState"]
+- !private ["SH", "clearDevices"]
+- !private ["SH", "connect"]
+- !private ["SH", "disconnected"]
+- ["SH", "init"]
+- !private ["SH", "name"]
+- !private ["SH", "peripheralBLE"]
+- ["SH", "poweredOff"]
+- ["SH", "poweredOn"]
+- ["SH", "resetting"]
+- !private ["SH", "scanForPeripherals"]
+- !private ["SH", "startDiscoveringServices"]
+- !private ["SH", "startScanning"]
+- !private ["SH", "state"]
+- !private ["SH", "stopScan"]
+- ["SH", "unauthorized"]
+- ["SH", "unknown"]
+- ["SH", "unsupported"]
+- !private ["So9NSCopyingP", "name"]
+- !private ["So9NSCopyingP", "state"]
+- !private ["So8NSObjectC", "BLEServiceUUID"]
+- ["So8NSObjectC", "BTService"]
+- ["So8NSObjectC", "CBCentralManager"]
+- ["So8NSObjectC", "CBPeripheral"]
+- !private ["So8NSObjectC", "CBPeripheralState"]
+- !private ["So8NSObjectC", "DispatchQueue"]
+- ["So8NSObjectC", "Error"]
+- ["So8NSObjectC", "NSNumber"]
+- ["So8NSObjectC", "String"]
+- ["So8NSObjectC", ""]
+- ["So8NSObjectC", "bleService"]
+- ["So8NSObjectC", "centralManager"]
+- ["So8NSObjectC", "centralManagerDidUpdateState"]
+- ["So8NSObjectC", "clearDevices"]
+- !private ["So8NSObjectC", "connect"]
+- ["So8NSObjectC", "init"]
+- !private ["So8NSObjectC", "name"]
+- ["So8NSObjectC", "peripheralBLE"]
+- !private ["So8NSObjectC", "scanForPeripherals"]
+- !private ["So8NSObjectC", "startDiscoveringServices"]
+- ["So8NSObjectC", "startScanning"]
+- !private ["So8NSObjectC", "state"]
+- !private ["So8NSObjectC", "stopScan"]
+- !private ["So8NSObjectP", "BLEServiceUUID"]
+- !private ["So8NSObjectP", "BTService"]
+- !private ["So8NSObjectP", "CBCentralManager"]
+- !private ["So8NSObjectP", "CBPeripheralState"]
+- !private ["So8NSObjectP", "DispatchQueue"]
+- ["So8NSObjectP", ""]
+- !private ["So8NSObjectP", "bleService"]
+- ["So8NSObjectP", "centralManager"]
+- ["So8NSObjectP", "centralManagerDidUpdateState"]
+- !private ["So8NSObjectP", "clearDevices"]
+- !private ["So8NSObjectP", "connect"]
+- ["So8NSObjectP", "init"]
+- !private ["So8NSObjectP", "name"]
+- !private ["So8NSObjectP", "peripheralBLE"]
+- !private ["So8NSObjectP", "scanForPeripherals"]
+- !private ["So8NSObjectP", "startDiscoveringServices"]
+- !private ["So8NSObjectP", "startScanning"]
+- !private ["So8NSObjectP", "state"]
+- !private ["So8NSObjectP", "stopScan"]
+- !private ["So9OS_objectC", "init"]
+- !private ["SY", "disconnected"]
+- ["SY", "poweredOff"]
+- ["SY", "poweredOn"]
+- ["SY", "resetting"]
+- ["SY", "unauthorized"]
+- ["SY", "unknown"]
+- ["SY", "unsupported"]
+- !private ["7Combine9SchedulerP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "BLEServiceUUID"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "BTService"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "CBCentralManager"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "CBPeripheralState"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "DispatchQueue"]
+- ["10Foundation27_KeyValueCodingAndObservingP", ""]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "bleService"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "centralManager"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "centralManagerDidUpdateState"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "clearDevices"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "connect"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "name"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "peripheralBLE"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "scanForPeripherals"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "startDiscoveringServices"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "startScanning"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "state"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "stopScan"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "BLEServiceUUID"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "BTService"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "CBCentralManager"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "CBPeripheralState"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "DispatchQueue"]
+- ["10Foundation37_KeyValueCodingAndObservingPublishingP", ""]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "bleService"]
+- ["10Foundation37_KeyValueCodingAndObservingPublishingP", "centralManager"]
+- ["10Foundation37_KeyValueCodingAndObservingPublishingP", "centralManagerDidUpdateState"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "clearDevices"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "connect"]
+- ["10Foundation37_KeyValueCodingAndObservingPublishingP", "init"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "name"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "peripheralBLE"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "scanForPeripherals"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "startDiscoveringServices"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "startScanning"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "state"]
+- !private ["10Foundation37_KeyValueCodingAndObservingPublishingP", "stopScan"]
+depends-nominal:
+- "12CleverCamera11BTDiscoveryC"
+- !private "12CleverCamera9BTServiceC"
+- !private "So16CBCentralManagerC"
+- "So24CBCentralManagerDelegateP"
+- !private "So9CBManagerC"
+- "So14CBManagerStateV"
+- !private "So6CBPeerC"
+- !private "So12CBPeripheralC"
+- !private "So20CBPeripheralDelegateP"
+- !private "So17CBPeripheralStateV"
+- "s7CVarArgP"
+- "s28CustomDebugStringConvertibleP"
+- "s23CustomStringConvertibleP"
+- !private "So18OS_dispatch_objectC"
+- !private "So17OS_dispatch_queueC"
+- "SQ"
+- "SH"
+- !private "So9NSCopyingP"
+- "So8NSObjectC"
+- "So8NSObjectP"
+- !private "So9OS_objectC"
+- "SY"
+- !private "7Combine9SchedulerP"
+- "10Foundation27_KeyValueCodingAndObservingP"
+- "10Foundation37_KeyValueCodingAndObservingPublishingP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/ObjectiveC.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreMIDI.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreMedia.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreData.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/simd.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreImage.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/QuartzCore.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Dispatch.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Metal.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Darwin.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Foundation.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/AVFoundation.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreFoundation.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreAudio.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/CoreGraphics.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/Swift.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/UIKit.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/swift/SwiftOnoneSupport.swiftmodule/arm64.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Combine.framework/Modules/Combine.swiftmodule/arm64-apple-ios.swiftinterface"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/ObjectiveC.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreMIDI.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreMedia.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreData.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/simd.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreImage.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/QuartzCore.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Dispatch.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Metal.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Foundation.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/AVFoundation.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreFoundation.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreAudio.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/CoreGraphics.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/UIKit.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/SwiftOnoneSupport.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/prebuilt-modules/Combine.swiftmodule/arm64-apple-ios.swiftmodule"
+- "/Users/RufusVijayaratnam/rufus/Coding/CleverCamera/CleverCamera-Bridging-Header.h"
+- "/Users/RufusVijayaratnam/rufus/Coding/CleverCamera/OpenCVWrapper.h"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/OpenGLES.framework/Headers/OpenGLES.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreMedia.framework/Headers/CoreMedia.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreImage.framework/Headers/CoreImage.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/apinotes/Dispatch.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreBluetooth.framework/Headers/CoreBluetooth.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Metal.framework/Headers/Metal.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/AVFoundation.framework/Headers/AVFoundation.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreAudioTypes.framework/Headers/CoreAudioTypes.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/UserNotifications.framework/Headers/UserNotifications.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/MediaToolbox.framework/Headers/MediaToolbox.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/AudioToolbox.framework/Headers/AudioToolbox.apinotes"
+- "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
+interface-hash: "1037d733211f262c4c55d7c998a4a758"
