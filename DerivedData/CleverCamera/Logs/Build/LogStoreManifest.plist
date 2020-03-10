@@ -40,6 +40,108 @@
 			<key>uniqueIdentifier</key>
 			<string>0299BF7E-148C-469D-967F-D14C42433B7B</string>
 		</dict>
+		<key>030736E8-115A-40B8-AEFB-FBCF184B6DD8</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>030736E8-115A-40B8-AEFB-FBCF184B6DD8.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>CleverCamera project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>CleverCamera</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build CleverCamera</string>
+			<key>timeStartedRecording</key>
+			<real>605529559.742414</real>
+			<key>timeStoppedRecording</key>
+			<real>605529559.80265105</real>
+			<key>title</key>
+			<string>Build CleverCamera</string>
+			<key>uniqueIdentifier</key>
+			<string>030736E8-115A-40B8-AEFB-FBCF184B6DD8</string>
+		</dict>
+		<key>03604DCE-4C67-4000-8FDB-52BDCA9FE796</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>03604DCE-4C67-4000-8FDB-52BDCA9FE796.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>CleverCamera project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>CleverCamera</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build CleverCamera</string>
+			<key>timeStartedRecording</key>
+			<real>605529143.15093899</real>
+			<key>timeStoppedRecording</key>
+			<real>605529148.56080604</real>
+			<key>title</key>
+			<string>Build CleverCamera</string>
+			<key>uniqueIdentifier</key>
+			<string>03604DCE-4C67-4000-8FDB-52BDCA9FE796</string>
+		</dict>
+		<key>13EAC444-3883-4FEC-95EB-81F4C28426DE</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>13EAC444-3883-4FEC-95EB-81F4C28426DE.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>CleverCamera project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>CleverCamera</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build CleverCamera</string>
+			<key>timeStartedRecording</key>
+			<real>605529419.53860795</real>
+			<key>timeStoppedRecording</key>
+			<real>605529425.58737004</real>
+			<key>title</key>
+			<string>Build CleverCamera</string>
+			<key>uniqueIdentifier</key>
+			<string>13EAC444-3883-4FEC-95EB-81F4C28426DE</string>
+		</dict>
 		<key>164A7FBD-BF24-496F-B7DD-31B12C57260E</key>
 		<dict>
 			<key>className</key>
@@ -74,6 +176,142 @@
 			<key>uniqueIdentifier</key>
 			<string>164A7FBD-BF24-496F-B7DD-31B12C57260E</string>
 		</dict>
+		<key>59C54CB4-5466-4974-B6FA-297DE406BCE8</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>59C54CB4-5466-4974-B6FA-297DE406BCE8.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>CleverCamera project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>CleverCamera</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build CleverCamera</string>
+			<key>timeStartedRecording</key>
+			<real>605529381.52308595</real>
+			<key>timeStoppedRecording</key>
+			<real>605529386.83972001</real>
+			<key>title</key>
+			<string>Build CleverCamera</string>
+			<key>uniqueIdentifier</key>
+			<string>59C54CB4-5466-4974-B6FA-297DE406BCE8</string>
+		</dict>
+		<key>7B094277-C56A-4790-83BE-B028B38AA9E1</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>7B094277-C56A-4790-83BE-B028B38AA9E1.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>CleverCamera project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>CleverCamera</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build CleverCamera</string>
+			<key>timeStartedRecording</key>
+			<real>605529591.32967103</real>
+			<key>timeStoppedRecording</key>
+			<real>605529596.99641299</real>
+			<key>title</key>
+			<string>Build CleverCamera</string>
+			<key>uniqueIdentifier</key>
+			<string>7B094277-C56A-4790-83BE-B028B38AA9E1</string>
+		</dict>
+		<key>8613E66F-68A6-45DE-BB76-4F1F99245F9F</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>8613E66F-68A6-45DE-BB76-4F1F99245F9F.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>CleverCamera project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>CleverCamera</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build CleverCamera</string>
+			<key>timeStartedRecording</key>
+			<real>605529532.945207</real>
+			<key>timeStoppedRecording</key>
+			<real>605529537.51775396</real>
+			<key>title</key>
+			<string>Build CleverCamera</string>
+			<key>uniqueIdentifier</key>
+			<string>8613E66F-68A6-45DE-BB76-4F1F99245F9F</string>
+		</dict>
+		<key>8BCD29E3-B94D-43E0-B775-ED9290433B9E</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>8BCD29E3-B94D-43E0-B775-ED9290433B9E.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>CleverCamera project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>CleverCamera</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build CleverCamera</string>
+			<key>timeStartedRecording</key>
+			<real>605529357.921018</real>
+			<key>timeStoppedRecording</key>
+			<real>605529362.48617899</real>
+			<key>title</key>
+			<string>Build CleverCamera</string>
+			<key>uniqueIdentifier</key>
+			<string>8BCD29E3-B94D-43E0-B775-ED9290433B9E</string>
+		</dict>
 		<key>94F17BB2-D876-464E-A29F-A612E463F1AF</key>
 		<dict>
 			<key>className</key>
@@ -107,6 +345,108 @@
 			<string>Build CleverCamera</string>
 			<key>uniqueIdentifier</key>
 			<string>94F17BB2-D876-464E-A29F-A612E463F1AF</string>
+		</dict>
+		<key>95D350DB-5DE5-4690-841A-024B3A9235A3</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>95D350DB-5DE5-4690-841A-024B3A9235A3.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>CleverCamera project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>CleverCamera</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build CleverCamera</string>
+			<key>timeStartedRecording</key>
+			<real>605529172.816576</real>
+			<key>timeStoppedRecording</key>
+			<real>605529178.92877102</real>
+			<key>title</key>
+			<string>Build CleverCamera</string>
+			<key>uniqueIdentifier</key>
+			<string>95D350DB-5DE5-4690-841A-024B3A9235A3</string>
+		</dict>
+		<key>A181695D-F11A-4161-A7F6-95EC740B9217</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>A181695D-F11A-4161-A7F6-95EC740B9217.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>CleverCamera project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>CleverCamera</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build CleverCamera</string>
+			<key>timeStartedRecording</key>
+			<real>605529663.07591796</real>
+			<key>timeStoppedRecording</key>
+			<real>605529668.04538703</real>
+			<key>title</key>
+			<string>Build CleverCamera</string>
+			<key>uniqueIdentifier</key>
+			<string>A181695D-F11A-4161-A7F6-95EC740B9217</string>
+		</dict>
+		<key>A1941495-0DF6-4621-BFAC-0317B3639187</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>A1941495-0DF6-4621-BFAC-0317B3639187.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>CleverCamera project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>CleverCamera</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build CleverCamera</string>
+			<key>timeStartedRecording</key>
+			<real>605529288.27014399</real>
+			<key>timeStoppedRecording</key>
+			<real>605529293.49239802</real>
+			<key>title</key>
+			<string>Build CleverCamera</string>
+			<key>uniqueIdentifier</key>
+			<string>A1941495-0DF6-4621-BFAC-0317B3639187</string>
 		</dict>
 		<key>B88D6940-4CCA-406A-B4C8-17220AE8796A</key>
 		<dict>
@@ -176,6 +516,40 @@
 			<key>uniqueIdentifier</key>
 			<string>BDD77D42-E609-4985-8971-6B254E7B1731</string>
 		</dict>
+		<key>BF346271-C7AF-4E98-A4F1-36E9154C35B3</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>BF346271-C7AF-4E98-A4F1-36E9154C35B3.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>CleverCamera project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>CleverCamera</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build CleverCamera</string>
+			<key>timeStartedRecording</key>
+			<real>605529234.06564403</real>
+			<key>timeStoppedRecording</key>
+			<real>605529238.79106104</real>
+			<key>title</key>
+			<string>Build CleverCamera</string>
+			<key>uniqueIdentifier</key>
+			<string>BF346271-C7AF-4E98-A4F1-36E9154C35B3</string>
+		</dict>
 		<key>C31D5191-770E-47A0-9209-670CADBBF703</key>
 		<dict>
 			<key>className</key>
@@ -209,6 +583,142 @@
 			<string>Clean CleverCamera</string>
 			<key>uniqueIdentifier</key>
 			<string>C31D5191-770E-47A0-9209-670CADBBF703</string>
+		</dict>
+		<key>C89A896E-F429-44A9-A71B-0315551FF60A</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>C89A896E-F429-44A9-A71B-0315551FF60A.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>CleverCamera project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>CleverCamera</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build CleverCamera</string>
+			<key>timeStartedRecording</key>
+			<real>605529446.80757296</real>
+			<key>timeStoppedRecording</key>
+			<real>605529446.85283995</real>
+			<key>title</key>
+			<string>Build CleverCamera</string>
+			<key>uniqueIdentifier</key>
+			<string>C89A896E-F429-44A9-A71B-0315551FF60A</string>
+		</dict>
+		<key>CB894137-0754-4273-9CC0-2C9C5DD6DDD7</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>CB894137-0754-4273-9CC0-2C9C5DD6DDD7.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>CleverCamera project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>CleverCamera</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build CleverCamera</string>
+			<key>timeStartedRecording</key>
+			<real>605529260.23984599</real>
+			<key>timeStoppedRecording</key>
+			<real>605529260.29657805</real>
+			<key>title</key>
+			<string>Build CleverCamera</string>
+			<key>uniqueIdentifier</key>
+			<string>CB894137-0754-4273-9CC0-2C9C5DD6DDD7</string>
+		</dict>
+		<key>D09195E8-86C6-45A3-810C-EA957D3DF345</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>D09195E8-86C6-45A3-810C-EA957D3DF345.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>CleverCamera project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>CleverCamera</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build CleverCamera</string>
+			<key>timeStartedRecording</key>
+			<real>605529546.79338801</real>
+			<key>timeStoppedRecording</key>
+			<real>605529553.58184099</real>
+			<key>title</key>
+			<string>Build CleverCamera</string>
+			<key>uniqueIdentifier</key>
+			<string>D09195E8-86C6-45A3-810C-EA957D3DF345</string>
+		</dict>
+		<key>EEB4C097-12C9-4056-99B3-1B05291882AC</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>EEB4C097-12C9-4056-99B3-1B05291882AC.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>CleverCamera project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>CleverCamera</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build CleverCamera</string>
+			<key>timeStartedRecording</key>
+			<real>605529732.45032096</real>
+			<key>timeStoppedRecording</key>
+			<real>605529737.50207806</real>
+			<key>title</key>
+			<string>Build CleverCamera</string>
+			<key>uniqueIdentifier</key>
+			<string>EEB4C097-12C9-4056-99B3-1B05291882AC</string>
 		</dict>
 		<key>F53A150C-5078-4570-9BAE-58509C27F27E</key>
 		<dict>
