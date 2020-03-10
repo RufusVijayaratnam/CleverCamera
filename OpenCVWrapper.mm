@@ -61,14 +61,13 @@ using namespace std;
     cvtColor(image, HSVImage, COLOR_BGRA2BGR);
     cvtColor(HSVImage, HSVImage, COLOR_BGR2HSV);
     
-    inRange(HSVImage, Scalar(0, 120, 100), Scalar(5, 255, 255), redMask1);
-    inRange(HSVImage, Scalar(175, 120, 100), Scalar(180, 255, 255), redMask2);
+    inRange(HSVImage, Scalar(0, 140, 120), Scalar(5, 255, 255), redMask1);
+    inRange(HSVImage, Scalar(175, 140, 120), Scalar(180, 255, 255), redMask2);
     inRange(HSVImage, Scalar(60, 150, 40), Scalar(100, 255, 255), greenMask);
-    inRange(HSVImage, Scalar(110, 230, 230), Scalar(180, 255, 255), blueMask);
-    
+    inRange(HSVImage, Scalar(100, 100, 0), Scalar(160, 150, 180), blueMask);
     redMask1 = redMask1 + redMask2;
     
-    int refinementResolution = 10;
+    int refinementResolution = 20;
     
     Mat refinedRed, refinedGreen, redBoxes, greenBoxes, refinedBlue;
     
@@ -78,18 +77,17 @@ using namespace std;
     
     
     drawBoxes(refinedRed, image);
-    drawBoxes(refinedGreen, image);
-    drawBoxes(refinedBlue, image);
-    //UInt16 pixelCoordX = 2231;
+    //drawBoxes(refinedGreen, image);
+        //UInt16 pixelCoordX = 2231;
     //UInt16 pixelCoordY = 993;
     cv::Point aPoint;
     aPoint.x = 34;
     aPoint.y = 23;
     
+
+   Mat pixelTransformMatrix = findPixelMap();
     
-    Mat pixelTransformMatrix = findPixelMap();
-    
-    robotTracking(refinedBlue, image, pixelTransformMatrix);
+   robotTracking(refinedRed, image, pixelTransformMatrix);
     
 }
 
@@ -164,13 +162,77 @@ void drawBoxes(cv::Mat& refinedImage,  cv::Mat& image) {
 cv::Mat findPixelMap() {
     Mat pixelMapMatrix;
     vector<Point2f>pixelPoints;
-    Point2f pointOne;
-    pointOne.x = 4;
-    pointOne.y = 83;
-    pixelPoints.push_back(pointOne);
     vector<Point2f>boardPoints;
     
-    pixelMapMatrix = findHomography(pixelPoints, boardPoints);
+    /*Point2f pixelOne;
+    pixelOne.x = 131;
+    pixelOne.y = 448;
+    pixelPoints.push_back(pixelOne);
+    
+    Point2f pixelTwo;
+    pixelTwo.x = 781;
+    pixelTwo.y = 571;
+    pixelPoints.push_back(pixelTwo);
+    
+    Point2f pixelThree;
+    pixelThree.x = 938;
+    pixelThree.y = 535;
+    pixelPoints.push_back(pixelThree);
+   
+    Point2f pixelFour;
+    pixelFour.x = 620;
+    pixelFour.y = 380;
+    pixelPoints.push_back(pixelFour);
+    
+     Point2f boardOne;
+     boardOne.x = 400;
+     boardOne.y = 950;
+     boardPoints.push_back(boardOne);
+     
+     Point2f boardTwo;
+     boardTwo.x = 1650;
+     boardTwo.y = 1065;
+     boardPoints.push_back(boardTwo);
+     
+     Point2f boardThree;
+     boardThree.x = 1650;
+     boardThree.y = 1335;
+     boardPoints.push_back(boardThree);
+    
+     Point2f boardFour;
+     boardFour.x = 1200;
+     boardFour.y = 1730;
+     boardPoints.push_back(boardFour);*/
+    
+    pixelPoints.push_back(Point2f(480, 450));
+    pixelPoints.push_back(Point2f(621, 374));
+    pixelPoints.push_back(Point2f(782, 569));
+    pixelPoints.push_back(Point2f(848, 483));
+    pixelPoints.push_back(Point2f(135, 445));
+    pixelPoints.push_back(Point2f(485, 334));
+    pixelPoints.push_back(Point2f(315, 295));
+    pixelPoints.push_back(Point2f(282, 266));
+    pixelPoints.push_back(Point2f(490, 260));
+    pixelPoints.push_back(Point2f(475, 250));
+    pixelPoints.push_back(Point2f(730, 270));
+    pixelPoints.push_back(Point2f(800, 270));
+    pixelPoints.push_back(Point2f(410, 220));
+    
+    boardPoints.push_back(Point2f(1200, 1270));
+    boardPoints.push_back(Point2f(1200, 1730));
+    boardPoints.push_back(Point2f(1650, 1065));
+    boardPoints.push_back(Point2f(1650, 1335));
+    boardPoints.push_back(Point2f(800, 1100));
+    boardPoints.push_back(Point2f(800, 1900));
+    boardPoints.push_back(Point2f(400, 2050));
+    boardPoints.push_back(Point2f(100, 2330));
+    boardPoints.push_back(Point2f(510, 2550));
+    boardPoints.push_back(Point2f(400, 2700));
+    boardPoints.push_back(Point2f(1080, 2700));
+    boardPoints.push_back(Point2f(1200, 2700));
+    boardPoints.push_back(Point2f(36, 2964));
+    
+    pixelMapMatrix = findHomography(pixelPoints, boardPoints, FM_RANSAC);
     
     return pixelMapMatrix;
 }
@@ -181,8 +243,11 @@ void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransfo
     Mat labels, stats, centroids;
     Mat rectangles(image.rows, image.cols, CV_8UC3);
     //Mat rectangles(image.rows, image.cols, )
-    
+    connectedComponentsWithStats(refinedImage, labels, stats, centroids, 8);
     myController *swift =  [[myController alloc]init];
+    
+    cout << "matrix is: " << endl;
+    cout << "M = " << endl << " "  << pixelTransformMatix << endl << endl;
     
     try {
         
@@ -209,7 +274,16 @@ void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransfo
         
         rectangle(image, pointOne, pointTwo, mean(theColour), 9);
         
-        [swift sendData:(UInt16)cx positionY:(UInt16)cy];
+        vector<Point2f> worldPoints;
+        vector<Point2f> cameraPoints;
+        Point2f robotPoint;
+        robotPoint.x = cx;
+        robotPoint.y = cy;
+        cameraPoints.push_back(robotPoint);
+        
+        perspectiveTransform(cameraPoints, worldPoints, pixelTransformMatix);
+ 
+       [swift sendData:(UInt16)worldPoints.at(0).x positionY:(UInt16)worldPoints.at(0).y];
         
     } catch(std::out_of_range& lesError) {
         cout << lesError.what() << endl;
