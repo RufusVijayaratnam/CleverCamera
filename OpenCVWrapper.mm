@@ -64,7 +64,7 @@ using namespace std;
     inRange(HSVImage, Scalar(0, 120, 100), Scalar(5, 255, 255), redMask1);
     inRange(HSVImage, Scalar(175, 120, 100), Scalar(180, 255, 255), redMask2);
     inRange(HSVImage, Scalar(60, 150, 40), Scalar(100, 255, 255), greenMask);
-    inRange(HSVImage, Scalar(110, 230, 230), Scalar(180, 255, 255), blueMask);
+    inRange(HSVImage, Scalar(110, 252, 252), Scalar(255, 255, 255), blueMask);
     
     redMask1 = redMask1 + redMask2;
     
@@ -79,7 +79,7 @@ using namespace std;
     
     //drawBoxes(refinedRed, image);
     //drawBoxes(refinedGreen, image);
-    drawBoxes(refinedBlue, image);
+    //drawBoxes(refinedBlue, image);
     //UInt16 pixelCoordX = 2231;
     //UInt16 pixelCoordY = 993;
     cv::Point aPoint;
@@ -170,7 +170,7 @@ cv::Mat findPixelMap() {
     pixelPoints.push_back(pointOne);
     vector<Point2f>boardPoints;
     
-    pixelMapMatrix = findHomography(pixelPoints, boardPoints);
+    //pixelMapMatrix = findHomography(pixelPoints, boardPoints);
     
     return pixelMapMatrix;
 }
@@ -180,9 +180,9 @@ cv::Mat findPixelMap() {
 void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransformMatix) {
     Mat labels, stats, centroids;
     Mat rectangles(image.rows, image.cols, CV_8UC3);
-    //Mat rectangles(image.rows, image.cols, )
     
     myController *swift =  [[myController alloc]init];
+     int _ = connectedComponentsWithStats(refinedImage, labels, stats, centroids, 8);
     
     try {
         
