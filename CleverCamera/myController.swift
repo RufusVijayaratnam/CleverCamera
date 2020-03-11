@@ -93,5 +93,37 @@ public class myController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
         }
     }
     
+    func makeRotationMatrix(angle: Float, type: Int) -> simd_float3x3 { // 0 for about x, 1 for y, 2 for z
+        var rows: [simd_float3]!
+        switch type {
+        case 0:
+            rows = [
+                simd_float3(1,              0,                  0),
+                simd_float3(0, cos(angle), -sin(angle)),
+                simd_float3(0, sin(angle), cos(angle))
+            ]
+        case 1:
+            rows = [
+                simd_float3( cos(angle), 0, sin(angle)),
+                simd_float3(                0, 1,               0),
+                simd_float3( -sin(angle), 0, cos(angle))
+            ]
+            
+        case 2:
+        rows = [
+            simd_float3( cos(angle), -sin(angle), 0),
+            simd_float3(sin(angle), cos(angle), 0),
+            simd_float3( 0,          0,          1)
+        ]
+        default:
+            print("Dude its gotta be 0, 1, or 2. Okay? Fucking idiot.")
+            print("Now we have to return identity matrix, and no one wants that")
+            return matrix_identity_float3x3
+        }
+        
+        return float3x3(rows: rows)
+        
+    }
+    
 }
 
