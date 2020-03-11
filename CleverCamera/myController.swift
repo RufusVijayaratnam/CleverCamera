@@ -90,31 +90,8 @@ public class myController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
             bleService.writePosition(position)
            // lastPosition = position;
             
-            // Start delay timer
-            allowTX = false
-            if timerTXDelay == nil {
-                timerTXDelay = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(myController.timerTXDelayElapsed), userInfo: nil, repeats: false)
-            }
         }
     }
     
-
-    
-    @objc func timerTXDelayElapsed() {
-        self.allowTX = true
-        self.stopTimerTXDelay()
-        print("for some reason this weird timer elapsed thing is running")
-        // Send current slider position
-       // self.sendPosition(UInt16(blueToothSendCount))
-    }
-    
-    func stopTimerTXDelay() {
-        if self.timerTXDelay == nil {
-            return
-        }
-        
-        timerTXDelay?.invalidate()
-        self.timerTXDelay = nil
-    }
 }
 

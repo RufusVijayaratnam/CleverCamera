@@ -265,7 +265,6 @@ SWIFT_CLASS("_TtC12CleverCamera12myController")
 - (void)viewDidLoad;
 - (void)connectionChanged:(NSNotification * _Nonnull)notification;
 - (void)sendData:(uint16_t)positionX positionY:(uint16_t)positionY;
-- (void)timerTXDelayElapsed;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
