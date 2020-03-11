@@ -164,46 +164,6 @@ cv::Mat findPixelMap() {
     vector<Point2f>pixelPoints;
     vector<Point2f>boardPoints;
     
-    /*Point2f pixelOne;
-    pixelOne.x = 131;
-    pixelOne.y = 448;
-    pixelPoints.push_back(pixelOne);
-    
-    Point2f pixelTwo;
-    pixelTwo.x = 781;
-    pixelTwo.y = 571;
-    pixelPoints.push_back(pixelTwo);
-    
-    Point2f pixelThree;
-    pixelThree.x = 938;
-    pixelThree.y = 535;
-    pixelPoints.push_back(pixelThree);
-   
-    Point2f pixelFour;
-    pixelFour.x = 620;
-    pixelFour.y = 380;
-    pixelPoints.push_back(pixelFour);
-    
-     Point2f boardOne;
-     boardOne.x = 400;
-     boardOne.y = 950;
-     boardPoints.push_back(boardOne);
-     
-     Point2f boardTwo;
-     boardTwo.x = 1650;
-     boardTwo.y = 1065;
-     boardPoints.push_back(boardTwo);
-     
-     Point2f boardThree;
-     boardThree.x = 1650;
-     boardThree.y = 1335;
-     boardPoints.push_back(boardThree);
-    
-     Point2f boardFour;
-     boardFour.x = 1200;
-     boardFour.y = 1730;
-     boardPoints.push_back(boardFour);*/
-    
     pixelPoints.push_back(Point2f(480, 450));
     pixelPoints.push_back(Point2f(621, 374));
     pixelPoints.push_back(Point2f(782, 569));
