@@ -92,7 +92,9 @@ public class myController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
         }
     }
 
-    func matrixOperation(pixelU: Float, pixelV: Float) {
+    @objc func matrixOperation() {
+        let pixelU = Float(pixelu)
+        let pixelV = Float(pixelv)
         let rotationX = makeRotationMatrix(angle: degToRadians(30), type: 0)
         let rotationY = makeRotationMatrix(angle: degToRadians(0), type: 1)
         let rotationZ = makeRotationMatrix(angle: degToRadians(24.5), type: 2)
@@ -132,6 +134,7 @@ public class myController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
         
       //  let position: [UInt16] = [UInt16(solutionVector[0]), UInt16(solutionVector[1])]
         print("3D mapped with x: \(solutionVector[0]) and y: \(solutionVector[1])")
+        
         
     }
 

@@ -209,7 +209,8 @@ void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransfo
         
         rectangle(image, pointOne, pointTwo, mean(theColour), 9);
         
-        [swift sendData:(UInt16)cx positionY:(UInt16)cy];
+        [swift matrixOperation:(UInt16)cx pixelv:(UInt16)cy];
+        
         
     } catch(std::out_of_range& lesError) {
         cout << lesError.what() << endl;
