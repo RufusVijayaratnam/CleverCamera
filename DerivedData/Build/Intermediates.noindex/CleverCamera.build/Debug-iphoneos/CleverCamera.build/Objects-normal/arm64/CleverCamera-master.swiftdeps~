@@ -1,8 +1,8 @@
 version: "Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)"
 options: "14b90fbe06057314ef4d1c2b00ad7c1e"
-build_time: [1583932321, 324932000]
+build_time: [1583934808, 276747000]
 inputs:
-  "/Users/RufusVijayaratnam/rufus/Coding/CleverCamera/CleverCamera/myController.swift": !dirty [1583932321, 197980325]
+  "/Users/RufusVijayaratnam/rufus/Coding/CleverCamera/CleverCamera/myController.swift": !private [1583934808, 167250202]
   "/Users/RufusVijayaratnam/rufus/Coding/CleverCamera/CleverCamera/BTService.swift": [1583700017, 591815566]
   "/Users/RufusVijayaratnam/rufus/Coding/CleverCamera/CleverCamera/AppDelegate.swift": [1583707856, 230457812]
   "/Users/RufusVijayaratnam/rufus/Coding/CleverCamera/CleverCamera/BTDiscovery.swift": [1583682198, 228941407]

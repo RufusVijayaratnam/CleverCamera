@@ -6,7 +6,7 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
-		<key>44721CF2-427D-4CAD-839F-1DA0018938F8</key>
+		<key>3EB121DE-8182-4CF1-B858-9D9E1C5008D5</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogMajorGroupSection</string>
@@ -15,7 +15,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.target.product-type.application</string>
 			<key>fileName</key>
-			<string>44721CF2-427D-4CAD-839F-1DA0018938F8.xcactivitylog</string>
+			<string>3EB121DE-8182-4CF1-B858-9D9E1C5008D5.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -26,13 +26,13 @@
 			<key>signature</key>
 			<string>CleverCamera-elpsbrksikyovxfdyhseejevxghe</string>
 			<key>timeStartedRecording</key>
-			<real>605625150.98728895</real>
+			<real>605627627.05166197</real>
 			<key>timeStoppedRecording</key>
-			<real>605625153.90629196</real>
+			<real>605627629.85777295</real>
 			<key>title</key>
 			<string>Build target CleverCamera</string>
 			<key>uniqueIdentifier</key>
-			<string>44721CF2-427D-4CAD-839F-1DA0018938F8</string>
+			<string>3EB121DE-8182-4CF1-B858-9D9E1C5008D5</string>
 		</dict>
 	</dict>
 	<key>preserveOldLogs</key>
