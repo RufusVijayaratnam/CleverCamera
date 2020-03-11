@@ -49,7 +49,7 @@ public class myController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
         NotificationCenter.default.addObserver(self, selector: #selector(myController.connectionChanged(_:)), name: NSNotification.Name(rawValue: BLEServiceChangedStatusNotification), object: nil)
         
         
-            //this is a random git test
+        //this is a random git test
         _ = btDiscoverySharedInstance
         
     }
@@ -88,41 +88,83 @@ public class myController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
         // Send position to BLE Shield (if service exists and is connected)
         if let bleService = btDiscoverySharedInstance.bleService {
             bleService.writePosition(position)
-           // lastPosition = position;
+            // lastPosition = position;
             
         }
     }
     
-    func makeRotationMatrix(angle: Float, type: Int) -> simd_float3x3 { // 0 for about x, 1 for y, 2 for z
-        var rows: [simd_float3]!
+    func matrixOperation(pixelU: Float, pixelV: Float) {
+        let rotationX = makeRotationMatrix(angle: degToRadians(15), type: 0)
+        let rotationY = makeRotationMatrix(angle: degToRadians(0), type: 1)
+        let rotationZ = makeRotationMatrix(angle: degToRadians(30), type: 2)
+        
+        let rotationMatrix: simd_float4x4 = rotationX * rotationZ
+        
+        var rows: [simd_float4]!
+        
+        var tx, ty, tz: Float
+        tx = 0
+        ty = 2000
+        tz = 508
+        
+        rows = [
+            simd_float4(1, 0, 0, tx),
+            simd_float4(0, 1, 0, ty),
+            simd_float4(0, 0, 1, tz),
+            simd_float4(0, 0, 0, 1)
+        ]
+        
+        let translationMatrix = float4x4(rows: rows)
+        
+        let transformationMatrix = translationMatrix * rotationMatrix
+        
+        let pixelVector  = simd_float4(pixelU, pixelV, 1, 1)
+        
+        let solutionVector = simd_mul(transformationMatrix.inverse, pixelVector)
+        
+        let position: [UInt16] = [UInt16(solutionVector[0]), UInt16(solutionVector[1])]
+        print("3D mapped with x: \(solutionVector[0]) and y: \(solutionVector[1])")
+        
+        sendPosition(position)
+    }
+    
+    func makeRotationMatrix(angle: Float, type: Int) -> simd_float4x4 { // 0 for about x, 1 for y, 2 for z
+        var rows: [simd_float4]!
         switch type {
         case 0:
             rows = [
-                simd_float3(1,              0,                  0),
-                simd_float3(0, cos(angle), -sin(angle)),
-                simd_float3(0, sin(angle), cos(angle))
+                simd_float4(1,              0,                  0, 0),
+                simd_float4(0, cos(angle), -sin(angle), 0),
+                simd_float4(0, sin(angle), cos(angle), 0),
+                simd_float4(0,              0,                0, 1)
             ]
         case 1:
             rows = [
-                simd_float3( cos(angle), 0, sin(angle)),
-                simd_float3(                0, 1,               0),
-                simd_float3( -sin(angle), 0, cos(angle))
+                simd_float4( cos(angle), 0, sin(angle), 0),
+                simd_float4(                0, 1,               0, 0),
+                simd_float4( -sin(angle), 0, cos(angle), 0),
+                simd_float4(0,              0,                0, 1)
             ]
             
         case 2:
-        rows = [
-            simd_float3( cos(angle), -sin(angle), 0),
-            simd_float3(sin(angle), cos(angle), 0),
-            simd_float3( 0,          0,          1)
-        ]
+            rows = [
+                simd_float4( cos(angle), -sin(angle), 0, 0),
+                simd_float4(sin(angle), cos(angle), 0, 0),
+                simd_float4( 0,          0,          1, 0),
+                simd_float4(0,              0,                0, 1)
+            ]
         default:
             print("Dude its gotta be 0, 1, or 2. Okay? Fucking idiot.")
             print("Now we have to return identity matrix, and no one wants that")
-            return matrix_identity_float3x3
+            return matrix_identity_float4x4
         }
         
-        return float3x3(rows: rows)
+        return float4x4(rows: rows)
         
+    }
+    
+    func degToRadians(_ angle: Float) -> Float {
+        return (angle * .pi) / 180
     }
     
 }
