@@ -92,7 +92,7 @@ public class myController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
         }
     }
 
-    @objc func matrixOperation() {
+    @objc func matrixOperation(_ pixelu: UInt16, pixelv: UInt16) {
         let pixelU = Float(pixelu)
         let pixelV = Float(pixelv)
         let rotationX = makeRotationMatrix(angle: degToRadians(30), type: 0)
