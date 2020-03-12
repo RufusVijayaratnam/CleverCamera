@@ -56,7 +56,17 @@ using namespace std;
 }
 
 #ifdef __cplusplus
+
+bool isInitialised = false;
+double cxInitial;
+double cyInitial;
+int runCount = 0;
+vector<cv::Point>centroids;
+
 - (void)processImage:(Mat&)image {
+    if (runCount < 1)  {
+        centroids.push_back(cv::Point(0, 0));
+    }
     Mat HSVImage, redMask1, redMask2, greenMask, blueMask, grayImage;
     cvtColor(image, HSVImage, COLOR_BGRA2BGR);
     cvtColor(HSVImage, HSVImage, COLOR_BGR2HSV);
@@ -77,73 +87,19 @@ using namespace std;
     refinedRed = refineColour(redMask1, image, refinementResolution);
     refinedGreen = refineColour(greenMask, image, refinementResolution);
     
-   /* SimpleBlobDetector::Params params;
-    
-    // Change thresholds
-    params.minThreshold = 10;
-    params.maxThreshold = 200;
-    
-    // Filter by Area.
-    params.filterByArea = true;
-    params.minArea = 1500;
-    
-    // Filter by Circularity
-    params.filterByCircularity = true;
-    params.minCircularity = 0.1;
-    
-    // Filter by Convexity
-    params.filterByConvexity = true;
-    params.minConvexity = 0.87;
-    
-    // Filter by Inertia
-    params.filterByInertia = true;
-    params.minInertiaRatio = 0.01;
-    
-    std::vector<KeyPoint> keypoints;
-    
-#if CV_MAJOR_VERSION < 3   // If you are using OpenCV 2
-    
-    // Set up detector with params
-    //SimpleBlobDetector detector(params);
-    
-    // You can use the detector this way
-    // detector.detect( im, keypoints);
-    
-#else
-    
-    // Set up detector with params
-    Ptr<SimpleBlobDetector> detector = SimpleBlobDetector::create(params);
-    
-    // SimpleBlobDetector::create creates a smart pointer.
-    // So you need to use arrow ( ->) instead of dot ( . )
-    detector->detect(image, keypoints);
-    
-#endif
-    
-    // Detect blobs.
     
     
-    
-    // Draw detected blobs as red circles.
-    // DrawMatchesFlags::DRAW_RICH_KEYPOINTS flag ensures the size of the circle corresponds to the size of blob
-    Mat im_with_keypoints;
-    drawKeypoints( image, keypoints, im_with_keypoints, Scalar(0,0,255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
-    
-    image = im_with_keypoints;*/
     drawBoxes(refinedRed, image);
     drawBoxes(refinedGreen, image);
     //drawBoxes(grayImage, image);
     //UInt16 pixelCoordX = 2231;
     //UInt16 pixelCoordY = 993;
-    cv::Point aPoint;
-    aPoint.x = 34;
-    aPoint.y = 23;
     
     
     Mat pixelTransformMatrix = findPixelMap();
     
     //robotTracking(refinedBlue, image, pixelTransformMatrix);
-    
+    runCount++;
 }
 
 Mat refineColour(cv::Mat& mask, const cv::Mat& image, const int refinementResolution) {
@@ -176,8 +132,6 @@ Mat refineColour(cv::Mat& mask, const cv::Mat& image, const int refinementResolu
 void drawBoxes(cv::Mat& refinedImage,  cv::Mat& image) {
     
     Mat labels, stats, centroids;
-    Mat rectangles(image.rows, image.cols, CV_8UC3);
-    //Mat rectangles(image.rows, image.cols, )
     int label_count = connectedComponentsWithStats(refinedImage, labels, stats, centroids, 8);
     
     try {
@@ -254,57 +208,23 @@ cv::Mat findPixelMap() {
 //MARK: Actually find real coordinates
 
 void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransformMatix) {
+   
+}
+
+void initialiseLocation(const cv::Mat& refinedImage) {
     Mat labels, stats, centroids;
-    Mat rectangles(image.rows, image.cols, CV_8UC3);
-    //Mat rectangles(image.rows, image.cols, )
-    connectedComponentsWithStats(refinedImage, labels, stats, centroids, 8);
-    // myController *swift =  [[myController alloc]init];
-    
-    cout << "matrix is: " << endl;
-    cout << "M = " << endl << " "  << pixelTransformMatix << endl << endl;
-    
+    int label_count = connectedComponentsWithStats(refinedImage, labels, stats, centroids, 8);
     try {
+        for (int i = 1; i < label_count; ++i) {
+            double cx = centroids.at<double>(i, 0);
+            double cy = centroids.at<double>(i, 1);
+            if (runCount < 20)  return;
+            centroids.push_back(cv::Point(cx, cy));
+            isInitialised = true;
+        }
+    } catch (...) {
         
-        int i = 1;
-        int x = stats.at<int>(i, cv::CC_STAT_LEFT);
-        int y = stats.at<int>(i, cv::CC_STAT_TOP);
-        int w = stats.at<int>(i, cv::CC_STAT_WIDTH);
-        int h = stats.at<int>(i, cv::CC_STAT_HEIGHT);
-        //int area = stats.at<int>(i, cv::CC_STAT_AREA);
-        double cx = centroids.at<double>(i, 0);
-        double cy = centroids.at<double>(i, 1);
-        
-        cv::Point pointOne;
-        pointOne.x = x;
-        pointOne.y = y;
-        cv::Point pointTwo;
-        pointTwo.x = x+w;
-        pointTwo.y = y+h;
-        cv::Rect rectColour(pointOne, pointTwo);
-        Mat theColour = image(rectColour);
-        String coords = format("(%d,%d)", (int)round(cx), (int)round(cy));
-        
-        putText(image, coords, pointOne, FONT_HERSHEY_SIMPLEX, 2, Scalar(255,255,255), 2);
-        
-        rectangle(image, pointOne, pointTwo, mean(theColour), 9);
-        
-        vector<Point2f> worldPoints;
-        vector<Point2f> cameraPoints;
-        Point2f robotPoint;
-        robotPoint.x = cx;
-        robotPoint.y = cy;
-        cameraPoints.push_back(robotPoint);
-        
-        perspectiveTransform(cameraPoints, worldPoints, pixelTransformMatix);
-        
-        // [swift sendData:(UInt16)worldPoints.at(0).x positionY:(UInt16)worldPoints.at(0).y];
-        
-    } catch(std::out_of_range& lesError) {
-        cout << lesError.what() << endl;
-    } catch(...) {
-        cout << "some weird error" << endl;
     }
-    
 }
 
 #endif
