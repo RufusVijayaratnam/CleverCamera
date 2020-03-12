@@ -38,6 +38,7 @@ using namespace std;
 {
     
     CvVideoCamera * videoCamera;
+    myController * swift;
     
 }
 
@@ -58,6 +59,7 @@ using namespace std;
 #ifdef __cplusplus
 
 bool isInitialised = false;
+bool robotLocated = false;
 double cxInitial;
 double cyInitial;
 int areaInitial;
@@ -86,15 +88,15 @@ vector<cv::Point>initialCentroids;
     refinedGreen = refineColour(greenMask, image, refinementResolution);
     
     if (!isInitialised) initialiseLocation(refinedRed);
-    if (isInitialised) findRobotWithMovement(refinedRed);
+    if (isInitialised && !robotLocated) findRobotWithMovement(refinedRed);
     
-   // drawBoxes(refinedRed, image);
-    //drawBoxes(refinedGreen, image);
-
+    drawBoxes(refinedRed, image);
+    drawBoxes(refinedGreen, image);
+    
     
     Mat pixelTransformMatrix = findPixelMap();
     
-    robotTracking(refinedBlue, image, pixelTransformMatrix);
+    if(robotLocated) robotTracking(refinedRed, image, pixelTransformMatrix);
     runCount++;
 }
 
@@ -151,7 +153,7 @@ void drawBoxes(cv::Mat& refinedImage,  cv::Mat& image) {
             Mat theColour = image(rectColour);
             String coords = format("(%d,%d)", (int)round(cx), (int)round(cy));
             
-           // putText(image, coords, pointOne, FONT_HERSHEY_SIMPLEX, 2, Scalar(255,255,255), 2);
+            // putText(image, coords, pointOne, FONT_HERSHEY_SIMPLEX, 2, Scalar(255,255,255), 2);
             
             rectangle(image, pointOne, pointTwo, mean(theColour), 9);
         }
@@ -204,8 +206,11 @@ cv::Mat findPixelMap() {
 //MARK: Actually find real coordinates
 
 void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransformMatix) {
+    cout << "attempting to recognise in this frame and track" << endl;
     Mat labels, stats, centroids;
     int label_count = connectedComponentsWithStats(refinedImage, labels, stats, centroids, 8);
+    cout << "label_count is: ";
+    cout << label_count << endl;
     try {
         for (int i = 1; i < label_count; ++i) {
             double cx = centroids.at<double>(i, 0);
@@ -218,7 +223,13 @@ void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransfo
             double deltaLocation = sqrt((pow(deltaX, 2) + pow(deltaY, 2)));
             double areaChange = (((double)area - areaInitial) / areaInitial) * 100;
             
-            if (deltaLocation < 30 && areaChange < 10) {
+            cout << "deltaLocation is: ";
+            cout << deltaLocation << endl;
+            cout << "area change is: ";
+            cout << areaChange << endl;
+            
+            if (deltaLocation < 100 && areaChange < 10) {
+                cout << "found robot in this frame" << endl;
                 int x = stats.at<int>(i, cv::CC_STAT_LEFT);
                 int y = stats.at<int>(i, cv::CC_STAT_TOP);
                 int w = stats.at<int>(i, cv::CC_STAT_WIDTH);
@@ -234,49 +245,53 @@ void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransfo
                 rectangle(image, pointOne, pointTwo, Scalar(142, 255, 255), 9);
                 
                 String coords = format("(%d,%d)", (int)round(cx), (int)round(cy));
-                 
+                
                 putText(image, coords, pointOne, FONT_HERSHEY_SIMPLEX, 2, Scalar(255,255,255), 2);
-
+                
+                cxInitial = cx;
+                cyInitial = cy;
+                areaInitial = area;
                 return;
             }
         }
     } catch(...) {
-        
+        cout << "some crash is happening" << endl;
     }
 }
 
 void findRobotWithMovement(const cv::Mat& image) {
+
     Mat labels, stats, centroids;
     int label_count = connectedComponentsWithStats(image, labels, stats, centroids, 8);
     
-    try {
-        for (int i = 0; i < label_count; ++i) {
-            double cx = centroids.at<double>(i, 0);
-            double cy = centroids.at<double>(i, 1);
-            int area = stats.at<int>(i, cv::CC_STAT_AREA);
-            double cx0 = initialCentroids.at(i).x;
-            double cy0 = initialCentroids.at(i).y;
-            
-            double deltaX = abs(cx - cx0);
-            double deltaY = abs(cy - cy0);
-            
-            double deltaLocation = sqrt((pow(deltaX, 2) + pow(deltaY, 2)));
-            
-            if (deltaLocation > 20) {
-                cxInitial = cx;
-                cyInitial = cy;
-                areaInitial = area;
-            }
-            
+    
+    for (int i = 0; i < label_count; ++i) {
+        double cx = centroids.at<double>(i, 0);
+        double cy = centroids.at<double>(i, 1);
+        int area = stats.at<int>(i, cv::CC_STAT_AREA);
+        double cx0 = initialCentroids.at(i).x;
+        double cy0 = initialCentroids.at(i).y;
+        
+        double deltaX = abs(cx - cx0);
+        double deltaY = abs(cy - cy0);
+        
+        double deltaLocation = sqrt((pow(deltaX, 2) + pow(deltaY, 2)));
+        
+        if (deltaLocation > 50) {
+            cout << "Found moving object to track" << endl;
+            cxInitial = cx;
+            cyInitial = cy;
+            areaInitial = area;
+            robotLocated = true;
+            return;
         }
-    } catch(std::out_of_range lesError) {
-        cout << lesError.what() << endl;
-    } catch(...) {
         
     }
+    
 }
 
 void initialiseLocation(const cv::Mat& refinedImage) {
+    
     Mat labels, stats, centroids;
     int label_count = connectedComponentsWithStats(refinedImage, labels, stats, centroids, 8);
     try {
@@ -284,11 +299,20 @@ void initialiseLocation(const cv::Mat& refinedImage) {
             double cx = centroids.at<double>(i, 0);
             double cy = centroids.at<double>(i, 1);
             if (runCount < 20)  return;
-            centroids.push_back(cv::Point(cx, cy));
+            cv::Point anElementCentroid;
+            anElementCentroid.x = cx;
+            anElementCentroid.y = cy;
+            initialCentroids.push_back(anElementCentroid);
             isInitialised = true;
+            cout << "now isInitialised is: ";
+            cout << isInitialised << endl;
         }
+    } catch (std::out_of_range& lesError) {
+        cout << "out of range error" << endl;
+    } catch(cv::Exception& lesError) {
+        cout << lesError.what() << endl;
     } catch (...) {
-        
+        cout << "not a cv or out of range error. What the fuck?" << endl;
     }
 }
 
