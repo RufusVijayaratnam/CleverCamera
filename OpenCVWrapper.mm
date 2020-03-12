@@ -60,13 +60,11 @@ using namespace std;
 bool isInitialised = false;
 double cxInitial;
 double cyInitial;
+int areaInitial;
 int runCount = 0;
-vector<cv::Point>centroids;
+vector<cv::Point>initialCentroids;
 
 - (void)processImage:(Mat&)image {
-    if (runCount < 1)  {
-        centroids.push_back(cv::Point(0, 0));
-    }
     Mat HSVImage, redMask1, redMask2, greenMask, blueMask, grayImage;
     cvtColor(image, HSVImage, COLOR_BGRA2BGR);
     cvtColor(HSVImage, HSVImage, COLOR_BGR2HSV);
@@ -87,7 +85,7 @@ vector<cv::Point>centroids;
     refinedRed = refineColour(redMask1, image, refinementResolution);
     refinedGreen = refineColour(greenMask, image, refinementResolution);
     
-    
+    if (!isInitialised) initialiseLocation(refinedRed);
     
     drawBoxes(refinedRed, image);
     drawBoxes(refinedGreen, image);
@@ -208,7 +206,38 @@ cv::Mat findPixelMap() {
 //MARK: Actually find real coordinates
 
 void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransformMatix) {
-   
+
+}
+
+void findRobotWithMovement(const cv::Mat& image) {
+    Mat labels, stats, centroids;
+    int label_count = connectedComponentsWithStats(image, labels, stats, centroids, 8);
+    
+    try {
+        for (int i = 0; i < label_count; ++i) {
+            double cx = centroids.at<double>(i, 0);
+            double cy = centroids.at<double>(i, 1);
+            int area = stats.at<int>(i, cv::CC_STAT_AREA);
+            double cx0 = initialCentroids.at(i).x;
+            double cy0 = initialCentroids.at(i).y;
+            
+            double deltaX = abs(cx - cx0);
+            double deltaY = abs(cy - cy0);
+            
+            double deltaLocation = sqrt((pow(deltaX, 2) + pow(deltaY, 2)));
+            
+            if (deltaLocation > 20) {
+                cxInitial = cx;
+                cyInitial = cy;
+                areaInitial = area;
+            }
+            
+        }
+    } catch(std::out_of_range lesError) {
+        cout << lesError.what() << endl;
+    } catch(...) {
+        
+    }
 }
 
 void initialiseLocation(const cv::Mat& refinedImage) {
