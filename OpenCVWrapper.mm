@@ -86,17 +86,15 @@ vector<cv::Point>initialCentroids;
     refinedGreen = refineColour(greenMask, image, refinementResolution);
     
     if (!isInitialised) initialiseLocation(refinedRed);
+    if (isInitialised) findRobotWithMovement(refinedRed);
     
-    drawBoxes(refinedRed, image);
-    drawBoxes(refinedGreen, image);
-    //drawBoxes(grayImage, image);
-    //UInt16 pixelCoordX = 2231;
-    //UInt16 pixelCoordY = 993;
-    
+   // drawBoxes(refinedRed, image);
+    //drawBoxes(refinedGreen, image);
+
     
     Mat pixelTransformMatrix = findPixelMap();
     
-    //robotTracking(refinedBlue, image, pixelTransformMatrix);
+    robotTracking(refinedBlue, image, pixelTransformMatrix);
     runCount++;
 }
 
@@ -153,7 +151,7 @@ void drawBoxes(cv::Mat& refinedImage,  cv::Mat& image) {
             Mat theColour = image(rectColour);
             String coords = format("(%d,%d)", (int)round(cx), (int)round(cy));
             
-            putText(image, coords, pointOne, FONT_HERSHEY_SIMPLEX, 2, Scalar(255,255,255), 2);
+           // putText(image, coords, pointOne, FONT_HERSHEY_SIMPLEX, 2, Scalar(255,255,255), 2);
             
             rectangle(image, pointOne, pointTwo, mean(theColour), 9);
         }
@@ -206,7 +204,45 @@ cv::Mat findPixelMap() {
 //MARK: Actually find real coordinates
 
 void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransformMatix) {
+    Mat labels, stats, centroids;
+    int label_count = connectedComponentsWithStats(refinedImage, labels, stats, centroids, 8);
+    try {
+        for (int i = 1; i < label_count; ++i) {
+            double cx = centroids.at<double>(i, 0);
+            double cy = centroids.at<double>(i, 1);
+            int area = stats.at<int>(i, cv::CC_STAT_AREA);
+            
+            double deltaX = abs(cx - cxInitial);
+            double deltaY = abs(cy - cyInitial);
+            
+            double deltaLocation = sqrt((pow(deltaX, 2) + pow(deltaY, 2)));
+            double areaChange = (((double)area - areaInitial) / areaInitial) * 100;
+            
+            if (deltaLocation < 30 && areaChange < 10) {
+                int x = stats.at<int>(i, cv::CC_STAT_LEFT);
+                int y = stats.at<int>(i, cv::CC_STAT_TOP);
+                int w = stats.at<int>(i, cv::CC_STAT_WIDTH);
+                int h = stats.at<int>(i, cv::CC_STAT_HEIGHT);
+                
+                cv::Point pointOne;
+                pointOne.x = x;
+                pointOne.y = y;
+                cv::Point pointTwo;
+                pointTwo.x = x+w;
+                pointTwo.y = y+h;
+                
+                rectangle(image, pointOne, pointTwo, Scalar(142, 255, 255), 9);
+                
+                String coords = format("(%d,%d)", (int)round(cx), (int)round(cy));
+                 
+                putText(image, coords, pointOne, FONT_HERSHEY_SIMPLEX, 2, Scalar(255,255,255), 2);
 
+                return;
+            }
+        }
+    } catch(...) {
+        
+    }
 }
 
 void findRobotWithMovement(const cv::Mat& image) {
