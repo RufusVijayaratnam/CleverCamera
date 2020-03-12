@@ -36,9 +36,9 @@ using namespace std;
 @implementation OpenCVWrapper
 
 {
- 
+    
     CvVideoCamera * videoCamera;
-  
+    
 }
 
 -(id)initWithImageView:(UIImageView*)iv {
@@ -57,37 +57,92 @@ using namespace std;
 
 #ifdef __cplusplus
 - (void)processImage:(Mat&)image {
-    Mat HSVImage, redMask1, redMask2, greenMask, blueMask;
+    Mat HSVImage, redMask1, redMask2, greenMask, blueMask, grayImage;
     cvtColor(image, HSVImage, COLOR_BGRA2BGR);
     cvtColor(HSVImage, HSVImage, COLOR_BGR2HSV);
+    cvtColor(image, grayImage, COLOR_BGRA2GRAY);
+    
+    threshold(grayImage, grayImage, 250, 255, THRESH_BINARY);
+    
     
     inRange(HSVImage, Scalar(0, 140, 120), Scalar(5, 255, 255), redMask1);
     inRange(HSVImage, Scalar(175, 140, 120), Scalar(180, 255, 255), redMask2);
     inRange(HSVImage, Scalar(60, 150, 40), Scalar(100, 255, 255), greenMask);
-    inRange(HSVImage, Scalar(100, 100, 0), Scalar(160, 150, 180), blueMask);
+    //inRange(HSVImage, Scalar(100, 100, 250), Scalar(1000, 1000, 1000), blueMask);
     redMask1 = redMask1 + redMask2;
-    
     int refinementResolution = 20;
     
-    Mat refinedRed, refinedGreen, redBoxes, greenBoxes, refinedBlue;
+    Mat refinedRed, refinedGreen, redBoxes, greenBoxes, refinedBlue, brightBlue, refinedGray;
     
     refinedRed = refineColour(redMask1, image, refinementResolution);
     refinedGreen = refineColour(greenMask, image, refinementResolution);
-    refinedBlue = refineColour(blueMask, image, refinementResolution);
+    
+   /* SimpleBlobDetector::Params params;
+    
+    // Change thresholds
+    params.minThreshold = 10;
+    params.maxThreshold = 200;
+    
+    // Filter by Area.
+    params.filterByArea = true;
+    params.minArea = 1500;
+    
+    // Filter by Circularity
+    params.filterByCircularity = true;
+    params.minCircularity = 0.1;
+    
+    // Filter by Convexity
+    params.filterByConvexity = true;
+    params.minConvexity = 0.87;
+    
+    // Filter by Inertia
+    params.filterByInertia = true;
+    params.minInertiaRatio = 0.01;
+    
+    std::vector<KeyPoint> keypoints;
+    
+#if CV_MAJOR_VERSION < 3   // If you are using OpenCV 2
+    
+    // Set up detector with params
+    //SimpleBlobDetector detector(params);
+    
+    // You can use the detector this way
+    // detector.detect( im, keypoints);
+    
+#else
+    
+    // Set up detector with params
+    Ptr<SimpleBlobDetector> detector = SimpleBlobDetector::create(params);
+    
+    // SimpleBlobDetector::create creates a smart pointer.
+    // So you need to use arrow ( ->) instead of dot ( . )
+    detector->detect(image, keypoints);
+    
+#endif
+    
+    // Detect blobs.
     
     
+    
+    // Draw detected blobs as red circles.
+    // DrawMatchesFlags::DRAW_RICH_KEYPOINTS flag ensures the size of the circle corresponds to the size of blob
+    Mat im_with_keypoints;
+    drawKeypoints( image, keypoints, im_with_keypoints, Scalar(0,0,255), DrawMatchesFlags::DRAW_RICH_KEYPOINTS );
+    
+    image = im_with_keypoints;*/
     drawBoxes(refinedRed, image);
-    //drawBoxes(refinedGreen, image);
-        //UInt16 pixelCoordX = 2231;
+    drawBoxes(refinedGreen, image);
+    //drawBoxes(grayImage, image);
+    //UInt16 pixelCoordX = 2231;
     //UInt16 pixelCoordY = 993;
     cv::Point aPoint;
     aPoint.x = 34;
     aPoint.y = 23;
     
-
-   Mat pixelTransformMatrix = findPixelMap();
     
-   robotTracking(refinedRed, image, pixelTransformMatrix);
+    Mat pixelTransformMatrix = findPixelMap();
+    
+    //robotTracking(refinedBlue, image, pixelTransformMatrix);
     
 }
 
@@ -127,8 +182,7 @@ void drawBoxes(cv::Mat& refinedImage,  cv::Mat& image) {
     
     try {
         
-        for (int i = 1; i < label_count; i++)
-        {
+        for (int i = 1; i < label_count; i++) {
             int x = stats.at<int>(i, cv::CC_STAT_LEFT);
             int y = stats.at<int>(i, cv::CC_STAT_TOP);
             int w = stats.at<int>(i, cv::CC_STAT_WIDTH);
@@ -204,7 +258,7 @@ void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransfo
     Mat rectangles(image.rows, image.cols, CV_8UC3);
     //Mat rectangles(image.rows, image.cols, )
     connectedComponentsWithStats(refinedImage, labels, stats, centroids, 8);
-    myController *swift =  [[myController alloc]init];
+    // myController *swift =  [[myController alloc]init];
     
     cout << "matrix is: " << endl;
     cout << "M = " << endl << " "  << pixelTransformMatix << endl << endl;
@@ -242,8 +296,8 @@ void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransfo
         cameraPoints.push_back(robotPoint);
         
         perspectiveTransform(cameraPoints, worldPoints, pixelTransformMatix);
- 
-       [swift sendData:(UInt16)worldPoints.at(0).x positionY:(UInt16)worldPoints.at(0).y];
+        
+        // [swift sendData:(UInt16)worldPoints.at(0).x positionY:(UInt16)worldPoints.at(0).y];
         
     } catch(std::out_of_range& lesError) {
         cout << lesError.what() << endl;
@@ -252,6 +306,7 @@ void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransfo
     }
     
 }
+
 #endif
 
 
