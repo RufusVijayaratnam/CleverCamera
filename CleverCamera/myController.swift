@@ -92,7 +92,16 @@ public class myController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
         }
     }
     
-
+    @objc func changeBackgroundColour(_ colour: String) {
+        switch colour {
+        case "red":
+                self.view.backgroundColor = UIColor.red
+        case "green":
+                self.view.backgroundColor = UIColor.green
+        default:
+            self.view.backgroundColor = UIColor.purple
+        }
+    }
 
 }
 
