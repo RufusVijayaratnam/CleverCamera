@@ -38,7 +38,7 @@ using namespace std;
 {
     
     CvVideoCamera * videoCamera;
-    myController * swift;
+    
     
 }
 
@@ -229,6 +229,13 @@ void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransfo
             cout << areaChange << endl;
             
             if (deltaLocation < 100 && areaChange < 10) {
+                
+                NSString *backgroundColour = @"red";
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    myController *swift = [[myController alloc]init];
+                    [swift changeBackgroundColour:backgroundColour];
+                });
+                
                 cout << "found robot in this frame" << endl;
                 int x = stats.at<int>(i, cv::CC_STAT_LEFT);
                 int y = stats.at<int>(i, cv::CC_STAT_TOP);
