@@ -56,6 +56,8 @@ using namespace std;
     return self;
 }
 
+
+
 #ifdef __cplusplus
 
 bool isInitialised = false;
@@ -233,7 +235,7 @@ void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransfo
                 NSString *backgroundColour = @"red";
                 dispatch_async(dispatch_get_main_queue(), ^{
                     myController *swift = [[myController alloc]init];
-                    [swift changeBackgroundColour:backgroundColour];
+                    //[swift changeBackgroundColour:backgroundColour];
                 });
                 
                 cout << "found robot in this frame" << endl;
@@ -271,20 +273,20 @@ void findRobotWithMovement(const cv::Mat& image) {
     Mat labels, stats, centroids;
     int label_count = connectedComponentsWithStats(image, labels, stats, centroids, 8);
     
-    
-    for (int i = 0; i < label_count; ++i) {
+    try {
+    for (int i = 1; i < label_count; ++i) {
         double cx = centroids.at<double>(i, 0);
         double cy = centroids.at<double>(i, 1);
         int area = stats.at<int>(i, cv::CC_STAT_AREA);
-        double cx0 = initialCentroids.at(i).x;
-        double cy0 = initialCentroids.at(i).y;
+        double cx0 = initialCentroids.at(i-1).x;
+        double cy0 = initialCentroids.at(i-1).y;
         
         double deltaX = abs(cx - cx0);
         double deltaY = abs(cy - cy0);
         
         double deltaLocation = sqrt((pow(deltaX, 2) + pow(deltaY, 2)));
         
-        if (deltaLocation > 50) {
+        if (deltaLocation > 5) {
             cout << "Found moving object to track" << endl;
             cxInitial = cx;
             cyInitial = cy;
@@ -295,10 +297,14 @@ void findRobotWithMovement(const cv::Mat& image) {
         
     }
     
+    } catch(std::out_of_range& lesError) {
+        cout << lesError.what() << endl;
+    }
 }
 
 void initialiseLocation(const cv::Mat& refinedImage) {
-    
+    cout << "now isInitialised is: ";
+    cout << isInitialised << endl;
     Mat labels, stats, centroids;
     int label_count = connectedComponentsWithStats(refinedImage, labels, stats, centroids, 8);
     try {
@@ -323,8 +329,21 @@ void initialiseLocation(const cv::Mat& refinedImage) {
     }
 }
 
+
+
 #endif
 
+-(void)resetInitialisation {
+    runCount = 0;
+    isInitialised = false;
+    initialCentroids.clear();
+    robotLocated = false;
+    cout << "tried to reset" << endl;
+    cout << "initialcentroids size: ";
+    cout << initialCentroids.size() << endl;
+    cout << "robot located is: ";
+    cout << robotLocated << endl;
+}
 
 -(void)startCamera
 {

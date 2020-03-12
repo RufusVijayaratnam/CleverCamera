@@ -27,6 +27,7 @@ public class myController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
     var lastPosition: UInt16 = 255
     
     var myView: UIImageView!
+    var resetInitilisationButton: UIButton!
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,13 @@ public class myController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
         let aspectRatio = CGSize(width: 3024, height: 4032)
         myView = UIImageView(frame: AVMakeRect(aspectRatio: aspectRatio, insideRect: theFrame))
         self.view.addSubview(myView)
+        
+        let buttonFrame = CGRect(x: 48, y: myView.bounds.maxY + 16, width: width - 2 * 48, height: 48)
+        resetInitilisationButton = UIButton(frame: buttonFrame)
+        resetInitilisationButton.backgroundColor = UIColor.blue
+        resetInitilisationButton.setTitle("Reset initialisation", for: .normal)
+        resetInitilisationButton.addTarget(self, action: #selector(resetInitialisation), for: .touchUpInside)
+        self.view.addSubview(resetInitilisationButton)
         
         self.CleverCamera = OpenCVWrapper(imageView: self.myView)
         self.CleverCamera.startCamera()
@@ -92,15 +100,8 @@ public class myController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
         }
     }
     
-    @objc func changeBackgroundColour(_ colour: String) {
-        switch colour {
-        case "red":
-                self.view.backgroundColor = UIColor.red
-        case "green":
-                self.view.backgroundColor = UIColor.green
-        default:
-            self.view.backgroundColor = UIColor.purple
-        }
+    @objc func resetInitialisation() {
+        self.CleverCamera.resetInitialisation()
     }
 
 }

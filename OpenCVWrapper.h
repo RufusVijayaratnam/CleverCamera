@@ -18,6 +18,7 @@
 
 @interface OpenCVWrapper : NSObject
 -(id)initWithImageView:(UIImageView*)iv;
+-(void)resetInitialisation;
 -(void)startCamera;
 -(void)stopCamera;
 -(void)doBlueTooth;
