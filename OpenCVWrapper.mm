@@ -82,12 +82,14 @@ vector<cv::Point>initialCentroids;
     inRange(HSVImage, Scalar(60, 150, 40), Scalar(100, 255, 255), greenMask);
     //inRange(HSVImage, Scalar(100, 100, 250), Scalar(1000, 1000, 1000), blueMask);
     redMask1 = redMask1 + redMask2;
-    int refinementResolution = 20;
+    int refinementResolution = 5;
     
     Mat refinedRed, refinedGreen, redBoxes, greenBoxes, refinedBlue, brightBlue, refinedGray;
     
     refinedRed = refineColour(redMask1, image, refinementResolution);
     refinedGreen = refineColour(greenMask, image, refinementResolution);
+    
+    
     
     if (!isInitialised) initialiseLocation(refinedRed);
     if (isInitialised && !robotLocated) findRobotWithMovement(refinedRed);
@@ -122,7 +124,7 @@ Mat refineColour(cv::Mat& mask, const cv::Mat& image, const int refinementResolu
             cv::Scalar avg = mean(src);
             
             
-            if (avg[0] >= 125.5) {
+            if (avg[0] >= 150) {
                 refinedImage(blockFrame).setTo(255);
             }
         }
@@ -235,12 +237,6 @@ void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransfo
             
             if (deltaLocation < 100 && areaChange < 10) {
                 
-             
-                /*dispatch_async(dispatch_get_main_queue(), ^{
-                    myController *swift = [[myController alloc]init];
-                     swift.view.backgroundColor = UIColor.redColor;
-                 });*/
-                
                 cout << "found robot in this frame" << endl;
                 int x = characteristics.at<int>(i, cv::CC_STAT_LEFT);
                 int y = characteristics.at<int>(i, cv::CC_STAT_TOP);
@@ -263,6 +259,20 @@ void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransfo
                 cxInitial = cx;
                 cyInitial = cy;
                 areaInitial = area;
+                
+                vector<cv::Point2f>mappedPixel;
+                vector<cv::Point2f>pixelCentroid;
+                pixelCentroid.push_back(cv::Point2f(cx, cy));
+                perspectiveTransform(pixelCentroid, mappedPixel, pixelTransformMatix);
+                
+                int cxMapped = round(mappedPixel.at(0).x);
+                int cyMapped = round(mappedPixel.at(0).y);
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                   myController *swift = [[myController alloc]init];
+                    [swift sendData:(UInt16)cxMapped positionY:(UInt16)cyMapped];
+                });
+                
                 return;
             }
         }
@@ -273,7 +283,6 @@ void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransfo
 
 void findRobotWithMovement(const cv::Mat& image) {
     cv::Rect startingArea(cv::Point(500, 150), cv::Point(760, 300));
-    rectangle(image, startingArea, Scalar(255, 255, 255));
     
     Mat labels, characteristics, centroids;
     int label_count = connectedComponentsWithStats(image, labels, characteristics, centroids, 8);
@@ -295,7 +304,7 @@ void findRobotWithMovement(const cv::Mat& image) {
             
             
             
-            if (deltaLocation > 20 && area > 500 && aspectRatio >= 1 && aspectRatio < 4 && 500 < cx && cx < 760 && 150 < cy && cy < 300) {
+            if (deltaLocation > 20 && area > 900 && aspectRatio >= 1 && aspectRatio < 4 && 500 < cx && cx < 760 && 150 < cy && cy < 300) {
                 cout << "Found moving object to track" << endl;
                 cxInitial = cx;
                 cyInitial = cy;
@@ -314,8 +323,6 @@ void findRobotWithMovement(const cv::Mat& image) {
 void initialiseLocation(const cv::Mat& refinedImage) {
     cout << "now isInitialised is: ";
     cout << isInitialised << endl;
-    cv::Rect startingArea(cv::Point(500, 150), cv::Point(760, 300));
-    rectangle(refinedImage, startingArea, Scalar(255, 255, 255));
     Mat labels, characteristics, centroids;
     int label_count = connectedComponentsWithStats(refinedImage, labels, characteristics, centroids, 8);
     try {
@@ -362,10 +369,6 @@ void initialiseLocation(const cv::Mat& refinedImage) {
 -(void)stopCamera
 {
     [videoCamera stop];
-}
-
--(void)doBlueTooth {
-    
 }
 
 @end
