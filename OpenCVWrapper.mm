@@ -252,9 +252,7 @@ void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransfo
                 
                 rectangle(image, pointOne, pointTwo, Scalar(142, 255, 255), 9);
                 
-                String coords = format("(%d,%d)", (int)round(cx), (int)round(cy));
                 
-                putText(image, coords, pointOne, FONT_HERSHEY_SIMPLEX, 2, Scalar(255,255,255), 2);
                 
                 cxInitial = cx;
                 cyInitial = cy;
@@ -268,11 +266,13 @@ void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransfo
                 int cxMapped = round(mappedPixel.at(0).x);
                 int cyMapped = round(mappedPixel.at(0).y);
                 
-                dispatch_async(dispatch_get_main_queue(), ^{
+                /*dispatch_async(dispatch_get_main_queue(), ^{
                    myController *swift = [[myController alloc]init];
                     [swift sendData:(UInt16)cxMapped positionY:(UInt16)cyMapped];
-                });
+                });*/
+                String coords = format("(%d,%d)", (int)round(cxMapped), (int)round(cyMapped));
                 
+                putText(image, coords, pointOne, FONT_HERSHEY_SIMPLEX, 2, Scalar(255,255,255), 2);
                 return;
             }
         }
