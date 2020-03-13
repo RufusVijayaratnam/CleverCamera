@@ -92,14 +92,16 @@ vector<cv::Point>initialCentroids;
     if (!isInitialised) initialiseLocation(refinedRed);
     if (isInitialised && !robotLocated) findRobotWithMovement(refinedRed);
     
-    drawBoxes(refinedRed, image);
-    drawBoxes(refinedGreen, image);
+    //drawBoxes(refinedRed, image);
+    //drawBoxes(refinedGreen, image);
     
     
     Mat pixelTransformMatrix = findPixelMap();
     
     if(robotLocated) robotTracking(refinedRed, image, pixelTransformMatrix);
     runCount++;
+    cv::Rect startingArea(cv::Point(500, 150), cv::Point(760, 300));
+    rectangle(image, startingArea, Scalar(255, 255, 255));
 }
 
 Mat refineColour(cv::Mat& mask, const cv::Mat& image, const int refinementResolution) {
@@ -131,33 +133,34 @@ Mat refineColour(cv::Mat& mask, const cv::Mat& image, const int refinementResolu
 
 void drawBoxes(cv::Mat& refinedImage,  cv::Mat& image) {
     
-    Mat labels, stats, centroids;
-    int label_count = connectedComponentsWithStats(refinedImage, labels, stats, centroids, 8);
+    Mat labels, characteristics, centroids;
+    int label_count = connectedComponentsWithStats(refinedImage, labels, characteristics, centroids, 8);
     
     try {
         
         for (int i = 1; i < label_count; i++) {
-            int x = stats.at<int>(i, cv::CC_STAT_LEFT);
-            int y = stats.at<int>(i, cv::CC_STAT_TOP);
-            int w = stats.at<int>(i, cv::CC_STAT_WIDTH);
-            int h = stats.at<int>(i, cv::CC_STAT_HEIGHT);
-            //int area = stats.at<int>(i, cv::CC_STAT_AREA);
+            int x = characteristics.at<int>(i, cv::CC_STAT_LEFT);
+            int y = characteristics.at<int>(i, cv::CC_STAT_TOP);
+            int w = characteristics.at<int>(i, cv::CC_STAT_WIDTH);
+            int h = characteristics.at<int>(i, cv::CC_STAT_HEIGHT);
+            int area = characteristics.at<int>(i, cv::CC_STAT_AREA);
             double cx = centroids.at<double>(i, 0);
             double cy = centroids.at<double>(i, 1);
-            
-            cv::Point pointOne;
-            pointOne.x = x;
-            pointOne.y = y;
-            cv::Point pointTwo;
-            pointTwo.x = x+w;
-            pointTwo.y = y+h;
-            cv::Rect rectColour(pointOne, pointTwo);
-            Mat theColour = image(rectColour);
-            String coords = format("(%d,%d)", (int)round(cx), (int)round(cy));
-            
-            // putText(image, coords, pointOne, FONT_HERSHEY_SIMPLEX, 2, Scalar(255,255,255), 2);
-            
-            rectangle(image, pointOne, pointTwo, mean(theColour), 9);
+            if (area > 100) {
+                cv::Point pointOne;
+                pointOne.x = x;
+                pointOne.y = y;
+                cv::Point pointTwo;
+                pointTwo.x = x+w;
+                pointTwo.y = y+h;
+                cv::Rect rectColour(pointOne, pointTwo);
+                Mat theColour = image(rectColour);
+                String coords = format("(%d,%d)", (int)round(cx), (int)round(cy));
+                
+                putText(image, coords, pointOne, FONT_HERSHEY_SIMPLEX, 2, Scalar(255,255,255), 2);
+                
+                rectangle(image, pointOne, pointTwo, mean(theColour), 9);
+            }
         }
     } catch(std::out_of_range& lesError) {
         cout << lesError.what() << endl;
@@ -173,31 +176,31 @@ cv::Mat findPixelMap() {
     vector<Point2f>boardPoints;
     
     pixelPoints.push_back(Point2f(480, 450));
-    pixelPoints.push_back(Point2f(621, 374));
+    /*pixelPoints.push_back(Point2f(621, 374));
     pixelPoints.push_back(Point2f(782, 569));
-    pixelPoints.push_back(Point2f(848, 483));
+    pixelPoints.push_back(Point2f(848, 483));*/
     pixelPoints.push_back(Point2f(135, 445));
-    pixelPoints.push_back(Point2f(485, 334));
+   /* pixelPoints.push_back(Point2f(485, 334));
     pixelPoints.push_back(Point2f(315, 295));
     pixelPoints.push_back(Point2f(282, 266));
-    pixelPoints.push_back(Point2f(490, 260));
+    pixelPoints.push_back(Point2f(490, 260));*/
     pixelPoints.push_back(Point2f(475, 250));
-    pixelPoints.push_back(Point2f(730, 270));
-    pixelPoints.push_back(Point2f(800, 270));
+   /* pixelPoints.push_back(Point2f(730, 270));
+    pixelPoints.push_back(Point2f(800, 270));*/
     pixelPoints.push_back(Point2f(410, 220));
     
     boardPoints.push_back(Point2f(1200, 1270));
-    boardPoints.push_back(Point2f(1200, 1730));
+   /* boardPoints.push_back(Point2f(1200, 1730));
     boardPoints.push_back(Point2f(1650, 1065));
-    boardPoints.push_back(Point2f(1650, 1335));
+    boardPoints.push_back(Point2f(1650, 1335));*/
     boardPoints.push_back(Point2f(800, 1100));
-    boardPoints.push_back(Point2f(800, 1900));
+   /* boardPoints.push_back(Point2f(800, 1900));
     boardPoints.push_back(Point2f(400, 2050));
     boardPoints.push_back(Point2f(100, 2330));
-    boardPoints.push_back(Point2f(510, 2550));
+    boardPoints.push_back(Point2f(510, 2550));*/
     boardPoints.push_back(Point2f(400, 2700));
-    boardPoints.push_back(Point2f(1080, 2700));
-    boardPoints.push_back(Point2f(1200, 2700));
+   /* boardPoints.push_back(Point2f(1080, 2700));
+    boardPoints.push_back(Point2f(1200, 2700));*/
     boardPoints.push_back(Point2f(36, 2964));
     
     pixelMapMatrix = findHomography(pixelPoints, boardPoints, FM_RANSAC);
@@ -209,15 +212,15 @@ cv::Mat findPixelMap() {
 
 void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransformMatix) {
     cout << "attempting to recognise in this frame and track" << endl;
-    Mat labels, stats, centroids;
-    int label_count = connectedComponentsWithStats(refinedImage, labels, stats, centroids, 8);
+    Mat labels, characteristics, centroids;
+    int label_count = connectedComponentsWithStats(refinedImage, labels, characteristics, centroids, 8);
     cout << "label_count is: ";
     cout << label_count << endl;
     try {
         for (int i = 1; i < label_count; ++i) {
             double cx = centroids.at<double>(i, 0);
             double cy = centroids.at<double>(i, 1);
-            int area = stats.at<int>(i, cv::CC_STAT_AREA);
+            int area = characteristics.at<int>(i, cv::CC_STAT_AREA);
             
             double deltaX = abs(cx - cxInitial);
             double deltaY = abs(cy - cyInitial);
@@ -232,17 +235,17 @@ void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransfo
             
             if (deltaLocation < 100 && areaChange < 10) {
                 
-                NSString *backgroundColour = @"red";
-                dispatch_async(dispatch_get_main_queue(), ^{
+             
+                /*dispatch_async(dispatch_get_main_queue(), ^{
                     myController *swift = [[myController alloc]init];
-                    //[swift changeBackgroundColour:backgroundColour];
-                });
+                     swift.view.backgroundColor = UIColor.redColor;
+                 });*/
                 
                 cout << "found robot in this frame" << endl;
-                int x = stats.at<int>(i, cv::CC_STAT_LEFT);
-                int y = stats.at<int>(i, cv::CC_STAT_TOP);
-                int w = stats.at<int>(i, cv::CC_STAT_WIDTH);
-                int h = stats.at<int>(i, cv::CC_STAT_HEIGHT);
+                int x = characteristics.at<int>(i, cv::CC_STAT_LEFT);
+                int y = characteristics.at<int>(i, cv::CC_STAT_TOP);
+                int w = characteristics.at<int>(i, cv::CC_STAT_WIDTH);
+                int h = characteristics.at<int>(i, cv::CC_STAT_HEIGHT);
                 
                 cv::Point pointOne;
                 pointOne.x = x;
@@ -269,34 +272,40 @@ void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransfo
 }
 
 void findRobotWithMovement(const cv::Mat& image) {
-
-    Mat labels, stats, centroids;
-    int label_count = connectedComponentsWithStats(image, labels, stats, centroids, 8);
+    cv::Rect startingArea(cv::Point(500, 150), cv::Point(760, 300));
+    rectangle(image, startingArea, Scalar(255, 255, 255));
+    
+    Mat labels, characteristics, centroids;
+    int label_count = connectedComponentsWithStats(image, labels, characteristics, centroids, 8);
     
     try {
-    for (int i = 1; i < label_count; ++i) {
-        double cx = centroids.at<double>(i, 0);
-        double cy = centroids.at<double>(i, 1);
-        int area = stats.at<int>(i, cv::CC_STAT_AREA);
-        double cx0 = initialCentroids.at(i-1).x;
-        double cy0 = initialCentroids.at(i-1).y;
-        
-        double deltaX = abs(cx - cx0);
-        double deltaY = abs(cy - cy0);
-        
-        double deltaLocation = sqrt((pow(deltaX, 2) + pow(deltaY, 2)));
-        
-        if (deltaLocation > 5) {
-            cout << "Found moving object to track" << endl;
-            cxInitial = cx;
-            cyInitial = cy;
-            areaInitial = area;
-            robotLocated = true;
-            return;
+        for (int i = 1; i < label_count; ++i) {
+            double cx = centroids.at<double>(i, 0);
+            double cy = centroids.at<double>(i, 1);
+            int area = characteristics.at<int>(i, cv::CC_STAT_AREA);
+            double cx0 = initialCentroids.at(i-1).x;
+            double cy0 = initialCentroids.at(i-1).y;
+            
+            double deltaX = abs(cx - cx0);
+            double deltaY = abs(cy - cy0);
+            
+            double deltaLocation = sqrt((pow(deltaX, 2) + pow(deltaY, 2)));
+            
+            double aspectRatio = (characteristics.at<int>(i, cv::CC_STAT_HEIGHT)) / characteristics.at<int>(i, cv::CC_STAT_WIDTH);
+            
+            
+            
+            if (deltaLocation > 20 && area > 500 && aspectRatio >= 1 && aspectRatio < 4 && 500 < cx && cx < 760 && 150 < cy && cy < 300) {
+                cout << "Found moving object to track" << endl;
+                cxInitial = cx;
+                cyInitial = cy;
+                areaInitial = area;
+                robotLocated = true;
+                return;
+            }
+            
         }
         
-    }
-    
     } catch(std::out_of_range& lesError) {
         cout << lesError.what() << endl;
     }
@@ -305,8 +314,10 @@ void findRobotWithMovement(const cv::Mat& image) {
 void initialiseLocation(const cv::Mat& refinedImage) {
     cout << "now isInitialised is: ";
     cout << isInitialised << endl;
-    Mat labels, stats, centroids;
-    int label_count = connectedComponentsWithStats(refinedImage, labels, stats, centroids, 8);
+    cv::Rect startingArea(cv::Point(500, 150), cv::Point(760, 300));
+    rectangle(refinedImage, startingArea, Scalar(255, 255, 255));
+    Mat labels, characteristics, centroids;
+    int label_count = connectedComponentsWithStats(refinedImage, labels, characteristics, centroids, 8);
     try {
         for (int i = 1; i < label_count; ++i) {
             double cx = centroids.at<double>(i, 0);
@@ -328,8 +339,6 @@ void initialiseLocation(const cv::Mat& refinedImage) {
         cout << "not a cv or out of range error. What the fuck?" << endl;
     }
 }
-
-
 
 #endif
 
