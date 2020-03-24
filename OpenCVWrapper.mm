@@ -38,8 +38,7 @@ using namespace std;
 {
     
     CvVideoCamera * videoCamera;
-    
-    
+
 }
 
 -(id)initWithImageView:(UIImageView*)iv {
@@ -270,7 +269,7 @@ void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransfo
                    myController *swift = [[myController alloc]init];
                     [swift sendData:(UInt16)cxMapped positionY:(UInt16)cyMapped];
                 });*/
-                String coords = format("(%d,%d)", (int)round(cxMapped), (int)round(cyMapped));
+                String coords = format("(%d,%d)", (int)round(cx), (int)round(cy));
                 
                 putText(image, coords, pointOne, FONT_HERSHEY_SIMPLEX, 2, Scalar(255,255,255), 2);
                 return;

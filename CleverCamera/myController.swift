@@ -187,13 +187,25 @@ public class myController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
            
        }
     
-    
-    
-    
     @objc func resetInitialisation() {
         self.CleverCamera.resetInitialisation()
+        let image = imageFromLayer(layer: myView.layer)
+        let heightInPoints = image.size.height
+        let heightInPixels = heightInPoints * image.scale
+
+        let widthInPoints = image.size.width
+        let widthInPixels = widthInPoints * image.scale
+        
+        print("height: \(heightInPixels) and width: \(widthInPixels)")
     }
 
+    func imageFromLayer(layer:CALayer) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(layer.frame.size, layer.isOpaque, 0)
+        layer.render(in: UIGraphicsGetCurrentContext()!)
+        let outputImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return outputImage!
+    }
     
    
 }
