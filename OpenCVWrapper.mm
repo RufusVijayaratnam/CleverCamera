@@ -45,7 +45,7 @@ using namespace std;
     videoCamera = [[CvVideoCamera alloc] initWithParentView:iv];
     
     videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
-    videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPresetPhoto;
+    videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset3840x2160;
     videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;
     videoCamera.defaultFPS = 30;
     videoCamera.grayscaleMode = NO;
@@ -81,7 +81,7 @@ vector<cv::Point>initialCentroids;
     inRange(HSVImage, Scalar(60, 150, 40), Scalar(100, 255, 255), greenMask);
     //inRange(HSVImage, Scalar(100, 100, 250), Scalar(1000, 1000, 1000), blueMask);
     redMask1 = redMask1 + redMask2;
-    int refinementResolution = 5;
+    int refinementResolution = 15;
     
     Mat refinedRed, refinedGreen, redBoxes, greenBoxes, refinedBlue, brightBlue, refinedGray;
     
@@ -96,6 +96,13 @@ vector<cv::Point>initialCentroids;
     //drawBoxes(refinedRed, image);
     //drawBoxes(refinedGreen, image);
     
+    cv::Point first = cv::Point(1476 - 49, 1921 - 49);
+    cv::Point second = cv::Point(1476 + 49, 1921 + 49);
+    
+    rectangle(image, first, second, Scalar(219, 194, 83), 9);
+    
+    cout << "rows: " << image.rows << endl;
+    cout<< "cols: " << image.cols << endl;
     
     Mat pixelTransformMatrix = findPixelMap();
     
@@ -147,7 +154,7 @@ void drawBoxes(cv::Mat& refinedImage,  cv::Mat& image) {
             int area = characteristics.at<int>(i, cv::CC_STAT_AREA);
             double cx = centroids.at<double>(i, 0);
             double cy = centroids.at<double>(i, 1);
-            if (area > 100) {
+            if (area > 500) {
                 cv::Point pointOne;
                 pointOne.x = x;
                 pointOne.y = y;
@@ -227,14 +234,14 @@ void robotTracking(cv::Mat& refinedImage,  cv::Mat& image, cv::Mat& pixelTransfo
             double deltaY = abs(cy - cyInitial);
             
             double deltaLocation = sqrt((pow(deltaX, 2) + pow(deltaY, 2)));
-            double areaChange = (((double)area - areaInitial) / areaInitial) * 100;
+            double areaChange = (double)area - areaInitial;
             
             cout << "deltaLocation is: ";
             cout << deltaLocation << endl;
             cout << "area change is: ";
             cout << areaChange << endl;
             
-            if (deltaLocation < 100 && areaChange < 10) {
+            if (deltaLocation < 100 && areaChange < 100) {
                 
                 cout << "found robot in this frame" << endl;
                 int x = characteristics.at<int>(i, cv::CC_STAT_LEFT);

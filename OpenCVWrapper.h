@@ -14,8 +14,6 @@
 #import <UIKit/UIKit.h>
 
 
-
-
 @interface OpenCVWrapper : NSObject
 -(id)initWithImageView:(UIImageView*)iv;
 -(void)resetInitialisation;

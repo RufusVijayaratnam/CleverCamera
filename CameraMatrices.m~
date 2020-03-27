@@ -7,9 +7,9 @@ Rx = [1,          0,           0;
       0, cos(theta), -sin(theta);
       0, sin(theta), cos(theta)];
 
-tx = -1000;
-ty = 1500;
-tz = 510;
+tx = 1000;
+ty = -1500;
+tz = -510;
 translation = [tx; ty; tz];
 
 extrinsic = [Rx translation];
@@ -31,7 +31,7 @@ worldCoords = [x; y; z; 1];
 
 scaledPixelCoords = intrinsic * extrinsic * worldCoords;
 
-pixelCoords = scaledPixelCoords / tz;
+pixelCoords = scaledPixelCoords / 510;
 
 disp(pixelCoords);
 

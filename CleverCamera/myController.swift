@@ -38,7 +38,7 @@ public class myController: UIViewController, AVCaptureVideoDataOutputSampleBuffe
         let height = screen.height
         
         let theFrame = CGRect(x: 0, y: 50,width: width,height: width * 1.7777777)
-        let aspectRatio = CGSize(width: 3024, height: 4032)
+        let aspectRatio = CGSize(width: 2160, height: 3840)
         myView = UIImageView(frame: AVMakeRect(aspectRatio: aspectRatio, insideRect: theFrame))
         self.view.addSubview(myView)
         
